@@ -1,0 +1,47 @@
+@import '../../css/_vars.scss';
+.register {
+    width: 50vw;
+    height: 60vh;
+    // border: 1px solid $secondary-color;
+    margin: 10vh auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 0px 9.5px -2px grey;
+    border: 1px solid rgba(0, 0, 0, 0);
+    transition: all .6s;
+
+    input,button {
+        margin: 2vh auto;
+        width: 50%;
+    }
+    input {
+        padding: 1em;
+        border: none;
+        border-bottom: 1px solid $secondary-color;
+        font-family: $font-family-txt;
+        background: #F6F4F4;
+    }
+    .button, .is-link {
+        background-color: $secondary-color;
+    }
+    .button:hover, .is-link:hover {
+        background-color: red;
+    }
+    input:focus{
+        outline-color: $secondary-color;
+    }
+}
+
+.register:hover {
+    box-shadow: 0;
+    border: 1px solid $secondary-color;
+ 
+}
+
+@media screen and (max-width: 540px ) {
+    .register {
+        width: 90vw;
+        
+    }
+}

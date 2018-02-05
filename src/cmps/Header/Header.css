@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 95vw;
+  margin: 0 auto;
+  box-shadow: 0 3px 2px -2px #fd5c63; }
+  .header pre {
+    background: none;
+    padding: 0; }
+  .header pre:hover {
+    color: #fd5c63; }
+  .header .logo-container {
+    display: flex;
+    align-self: center; }
+    .header .logo-container pre {
+      color: #fd5c63; }
+    .header .logo-container .logo {
+      width: 60px;
+      padding: 1vh 1vw; }
+      .header .logo-container .logo img {
+        width: 100%; }
+  .header h2 {
+    align-self: center; }
+  .header nav {
+    align-self: center; }
+    .header nav ul {
+      display: flex;
+      justify-content: space-between; }
+    .header nav pre {
+      font-family: Helvetica, sans-serif;
+      margin: 1vw; }
+
+@media screen and (max-width: 540px) {
+  .header .welcome {
+    display: none; } }

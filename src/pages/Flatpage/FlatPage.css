@@ -1,0 +1,112 @@
+.flat-info {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  width: 70vw;
+  text-align: center;
+  margin: 0 auto; }
+  .flat-info .img-container {
+    width: 100%;
+    margin-top: 4vh;
+    position: relative; }
+    .flat-info .img-container .flat-img {
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%; }
+    .flat-info .img-container .heart {
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      font-size: 2.5em;
+      cursor: pointer; }
+      .flat-info .img-container .heart .fa-heart {
+        color: #fd5c63; }
+      .flat-info .img-container .heart .fa-heart-o {
+        color: white; }
+    .flat-info .img-container .heart:hover {
+      font-size: 3em;
+      right: 7%;
+      top: 6%;
+      transition: all 200ms; }
+    .flat-info .img-container .fa-plus {
+      color: white;
+      font-size: 4em;
+      position: absolute;
+      left: 3%;
+      bottom: 5%;
+      cursor: pointer; }
+  .flat-info li, .flat-info li > span, .flat-info .align-left {
+    text-align: left; }
+  .flat-info .flat-desc-p {
+    column-count: 2;
+    column-gap: 5vw;
+    column-rule: 1px solid #fd5c63;
+    text-align: justify; }
+  .flat-info .flat-desc {
+    text-align: left;
+    margin: 0 auto;
+    padding: 2vh 6vw;
+    box-shadow: 0 3px 2px -2px #fd5c63;
+    padding-top: 1.5vh; }
+  .flat-info ul {
+    list-style: none;
+    width: 30%; }
+  .flat-info .flat-prices span {
+    font-weight: 700; }
+  .flat-info .amenities, .flat-info .flat-prices {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2vh; }
+    .flat-info .amenities h1, .flat-info .flat-prices h1 {
+      padding-left: .6vw;
+      width: 30%; }
+  .flat-info .flat-prices {
+    height: 10vh; }
+  .flat-info hr {
+    background: #fd5c63;
+    border: 0.8px solid #fd5c63;
+    opacity: .45;
+    margin-bottom: 0; }
+  .flat-info .listing {
+    box-shadow: 0 -3px 2px -2px #fd5c63;
+    margin-top: 2vh;
+    padding-top: 1.5vh; }
+
+@media screen and (max-width: 540px) {
+  .flat-info {
+    font-size: .77em; }
+    .flat-info .img-container .heart {
+      font-size: 2em; }
+    .flat-info .img-container .heart:hover {
+      font-size: 2.4em; }
+    .flat-info .img-container .fa-plus::before {
+      font-size: .7em; }
+    .flat-info .flat-desc-p {
+      column-count: 1;
+      column-gap: 0;
+      column-rule: none;
+      text-align: justify; }
+    .flat-info .amenities, .flat-info .flat-prices {
+      display: flex;
+      flex-direction: column; }
+      .flat-info .amenities h1, .flat-info .amenities ul, .flat-info .flat-prices h1, .flat-info .flat-prices ul {
+        width: 100%; }
+      .flat-info .amenities h1, .flat-info .flat-prices h1 {
+        text-align: center;
+        font-weight: 700; }
+    .flat-info .amenities h1 {
+      margin: 0 0 1.5vh; }
+    .flat-info .amenities ul {
+      display: flex;
+      justify-content: space-around; }
+      .flat-info .amenities ul span {
+        display: none; }
+    .flat-info hr {
+      margin-top: .75rem; }
+    .flat-info .flat-prices {
+      height: 13vh; }
+      .flat-info .flat-prices h1, .flat-info .flat-prices ul {
+        width: 100%; }
+      .flat-info .flat-prices li {
+        display: flex;
+        justify-content: space-between; } }

@@ -1,0 +1,8 @@
+.main-home ul {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 90vw;
+  padding: 0;
+  margin: 0 auto;
+  margin-top: 2vh; }
