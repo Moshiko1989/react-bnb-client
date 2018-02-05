@@ -10,9 +10,7 @@
     margin-top: 4vh;
     position: relative; }
     .flat-info .img-container .flat-img {
-      width: 100%;
-      max-width: 100%;
-      max-height: 100%; }
+      width: 100%; }
     .flat-info .img-container .heart {
       position: absolute;
       top: 5%;
