@@ -1,7 +1,6 @@
 // Extentions
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
-
 // Import { Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
