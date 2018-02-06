@@ -1,16 +1,8 @@
-/* body {
-  height: 100%;
-  width: 100vw;
-} */
+
 
 .App {
   text-align: center;
-  /* position: relative; */
 }
-
-/* .switch {
-  padding-bottom: 20px;
-}  */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -35,11 +27,19 @@ a {
   text-decoration: none;
   color: black;
 }
-/* a:active {
-  color: black;
-} */ 
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.switch-header {
+
+}
+
+.outer-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+

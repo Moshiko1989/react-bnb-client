@@ -23,14 +23,20 @@ function getFlatById(id) {
 
 }
 
-// function getFlatsByIds(ids) {
-//     flats.reduce(() => { }, [])
-// }
+function getFlatsByIds(flatIds) {
+    let strFlatIds = JSON.stringify(flatIds);
+    return axios.get(`${URL}/liked/${strFlatIds}`);
+}
 
+function updateFlat(flat, id) {
+    console.log('flat: ', flat);
+    return axios.put(`${URL}/${id}`, flat)
+}
 
 
 export default {
     getFlats,
     getFlatById,
-    // getFlatsByIds
+    updateFlat,
+    getFlatsByIds
 }

@@ -27,8 +27,10 @@ export class FlatPage extends Component {
             this.props.history.push('/login');
             return;
         }
-        console.log(this.props.FlatStore.flatGetter._id);
+
+        let userId = this.props.UserStore.currUserGetter._id;
         this.props.UserStore.toggleLike(this.props.FlatStore.flatGetter._id);
+        this.props.FlatStore.toggleLike(userId);
     }
 
     openModal = () => {

@@ -9,6 +9,7 @@ var URL = 'http://localhost:4000/api/user';
 
 const STORAGE_KEY = 'user';
 
+
 function loadPrevUser() {
     return StorageService.load(STORAGE_KEY);
 }
@@ -16,16 +17,6 @@ function loadPrevUser() {
 function loadUser(credentials) {
     console.log('credentials: ', credentials);
     return axios.get(`${URL}/${credentials.name}/${credentials.password}`)
-        
-    // return new Promise((res, rej) => {
-    //     setTimeout(() => {
-    //         res({
-    //             name: 'mock user from server',
-    //             bookedFlats: [],
-    //             likedFlatsIds: [],
-    //         })
-    //     }, 250)
-    // })
 }
 
 // Saves user to server & updates local storage. 
@@ -52,23 +43,14 @@ function saveUser(user) {
             res(user)
         }, 250)
     })
-
-    // Naman server
-    // return axios.post(`${URL}/data/user`, user)
-    //  .then(res => {
-    //     StorageService.save(STORAGE_KEY,res.data)
-    //     return res.data
-    //  })
-    //  .catch(err => { 
-    //      throw err })
 }
 
 function getEmptyUser() {
     return {
-        // id: 'mock id',
         name: '',
         likedFlatsIds: [],
         bookedFlats: [],
+        bookedFlatsIds: [],
         joinedAt: Date.now(),
         email: '',
         password: '',
@@ -82,17 +64,8 @@ function clearUserFromStorage() {
 function updateUser(user, id) {
     console.log('user: ', user);
     return axios.put(`${URL}/${id}`, user)
-
-    // Mock server
-    // return new Promise((res, rej) => {
-    //     setTimeout(() => {
-    //         // var newUser = JSON.parse(JSON.stringify(user))
-    //         console.log(user.likedFlatsIds)
-    //         // newUser.likedFlatsIds.push(id);
-    //         res(user);
-    //     }, 1000);
-    // })
 }
+
 
 export default {
     STORAGE_KEY,

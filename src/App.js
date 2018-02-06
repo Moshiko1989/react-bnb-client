@@ -32,18 +32,18 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <div>
-            <Header props={this.props} />
-            {tests}
-            {/* <div className="switch"> */}
-              <Switch className="switch">
-                <Route exact path="/flat/:id" render={(props) => <FlatPage {...props} />}></Route>
-                <Route path="/signup" component={Register} />
-                <Route path="/login" component={Login} />
-                <Route path="/profile" component={ProfilePage} />
-                <Route exact path="/" render={(props) => <HomePage {...props} />}></Route>
-              </Switch>
-            {/* </div> */}
+          <div className="outer-wrapper">
+            <div className="switch-header">
+              <Header props={this.props} />
+              {tests}
+                <Switch className="switch">
+                  <Route exact path="/flat/:id" render={(props) => <FlatPage {...props} />}></Route>
+                  <Route path="/signup" component={Register} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/profile" component={ProfilePage} />
+                  <Route exact path="/" render={(props) => <HomePage {...props} />}></Route>
+                </Switch>
+            </div>
             <Footer />
           </div>
         </Router>

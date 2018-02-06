@@ -7,7 +7,7 @@ import 'bulma/css/bulma.css';
 import './FlatPreview.css';
 // import UserStore from '../../store/UserStore';
 
-@inject('UserStore')
+@inject('UserStore', 'FlatStore')
 @observer
 export class FlatPreview extends Component {
 
@@ -18,8 +18,10 @@ export class FlatPreview extends Component {
             return;
         }
 
+        let userId = this.props.UserStore.currUserGetter._id;
         // console.log(this.props.flat._id);
         this.props.UserStore.toggleLike(this.props.flat._id);
+        this.props.FlatStore.toggleLike(userId, this.props.flat);
     }
 
     render() {

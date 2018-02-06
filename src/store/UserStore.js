@@ -22,9 +22,7 @@ class UserStore {
     @action _removeLike = (flatId) => {
         var idx = this.currUser.likedFlatsIds.indexOf(flatId)
         this.currUser.likedFlatsIds.splice(idx, 1)
-        // console.log('removing')
         console.log(this.currUser)
-
     }
 
     @action _addLike = (flatId) => {
@@ -37,7 +35,11 @@ class UserStore {
     }
 
     @action _bookFlat = (bookingDetails) => {
-        this.currUser.bookedFlats.push(bookingDetails);
+        this.currUser.bookedFlatsIds.push(bookingDetails);
+    }
+
+    @action _addTransac = (transacId) => {
+        this.currUser.bookedFlats.push(transacId);
     }
 
     clearUser = () => {
@@ -54,17 +56,24 @@ class UserStore {
     }
 
     bookFlat = (bookingDetails) => {
-        // console.log(this.currUser);
+
         TransacService.saveTransac(bookingDetails)
             .then(res => {
                 console.log('transac server answer', res.data)
-                this._bookFlat(res.data._id);
+                this._addTransac(res.data._id);
                 UserService.updateUser(this.currUser, this.currUser._id)
                     .then(res => {
                         StorageService.save(STORAGE_KEY, res.data);
                         this._setUser(res.data);
                         console.log(this.currUser);
                     })
+            })
+
+        this._bookFlat(bookingDetails);
+        UserService.updateUser(this.currUser, this.currUser._id)
+            .then(res => {
+                StorageService.save(STORAGE_KEY, res.data);
+                this._setUser(res.data);
             })
     }
 

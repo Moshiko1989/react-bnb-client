@@ -40,7 +40,7 @@ export class TransactionModal extends Component {
         this.refs.msg.style.opacity = '0.5';
     } 
 
-    submitForm = (ev) => {
+    validate = () => {
         if (!this.state.bookStart || !this.state.bookEnd || !this.state.guestCount) {
             this.updateMsg('Please fill all fields');
             return;
@@ -65,6 +65,9 @@ export class TransactionModal extends Component {
             this.updateMsg('Guest count is not valid');         
             return;
         }
+    }
+
+    submitForm = (ev) => {       
         this.props.onSubmit(this.state);
         this.closeModal(ev);
     }
