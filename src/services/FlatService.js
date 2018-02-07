@@ -1,36 +1,24 @@
 import axios from 'axios'
-let URL = 'http://localhost:4000/api/flats'
+const URL = 'http://localhost:4000/flats'
 // if (process.env.NODE_ENV !== 'development') {
 //     URL = ''
 // }
 
-const flats = [];
-
 function getFlats(query = null) {
-    // return Promise.resolve(flats)
-    return axios.get(URL).then(res => res.data)
-        .catch(err => {
-            throw err;
-        });
+    return axios.get(URL).then(res => res.data);
 }
 
 function getFlatById(id) {
-    return axios.get(`${URL}/${id}`)
-
-    // return new Promise((res, rej) => {
-    //     res(flats.find(flat => flat._id === id))
-    // })
-
+    return axios.get(`${URL}/${id}`);
 }
 
 function getFlatsByIds(flatIds) {
     let strFlatIds = JSON.stringify(flatIds);
-    return axios.get(`${URL}/liked/${strFlatIds}`);
+    return axios.get(`${URL}/ids/${strFlatIds}`);
 }
 
 function updateFlat(flat, id) {
-    console.log('flat: ', flat);
-    return axios.put(`${URL}/${id}`, flat)
+    return axios.put(`${URL}/${id}`, flat);
 }
 
 

@@ -1,16 +1,18 @@
+// Extentions
 import { computed, observable, action, useStrict } from 'mobx';
-
+// Services
 import FlatService from '../services/FlatService'
 
 useStrict(true)
 
 class FlatObservableStore {
+	// State
 	@observable flats = [];
 	@observable currFlat = null;
 	@observable bookedByUser = null;
-	// @observable userLikedIds = [];
 	@observable userLikedFlats = null;
 
+	// Observing functions
 	@computed get userLikedFlatsGetter() {
 		return this.userLikedFlats;
 	}
@@ -25,6 +27,11 @@ class FlatObservableStore {
 
 	@computed get flatGetter() {
 		return this.currFlat;
+	}
+
+	// Changing State syncronously
+	@action _userBooking = (bookingDetails) => {
+		this.currFlat.bookings.push(bookingDetails);
 	}
 
 	@action _setBookedByUser = (flats) => {
@@ -45,32 +52,39 @@ class FlatObservableStore {
 
 	@action _addLike = (userId) => {
 		this.currFlat.userLikedIds.push(userId);
-		console.log(this.currFlat);
 	}
 
 	@action _removeLike = (userId) => {
 		var idx = this.currFlat.userLikedIds.indexOf(userId);
 		this.currFlat.userLikedIds.splice(idx, 1);
-		console.log(this.currFlat);
 	}
 
-	loadFlats() {
+	// Accesses from components & pages
+	userBooking = (bookingDetails) => {
+		this._userBooking(bookingDetails);
+		FlatService.updateFlat(this.currFlat, this.currFlat._id)
+			.then(res => {
+				this._setCurrFlat(res.data);
+			})
+	}
+
+	loadFlats = () => {
 		FlatService.getFlats()
 			.then(this.setFlats)
 	}
-	loadFlatById(id) {
+	loadFlatById = (id) => {
 		FlatService.getFlatById(id)
 			.then((res) => { this._setCurrFlat(res.data) })
 	}
 
-	loadLikedFlats(ids) {
+	loadLikedFlats = (ids) => {
 		FlatService.getFlatsByIds(ids)
 			.then(res => {
 				this._setUserLikedFlats(res.data);
 			})
 	}
 
-	loadBookedFlats(ids) {
+	loadBookedFlats = (ids) => {
 		FlatService.getFlatsByIds(ids)
 			.then(res => {
 				this._setBookedByUser(res.data);

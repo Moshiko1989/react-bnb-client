@@ -1,9 +1,7 @@
 // Extentions
 import React, { Component } from 'react';
-// import { NavLink } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 // Styles
-// import 'bulma/css/bulma.css';
 import './HomePage.css';
 // Components
 import { FlatPreview } from '../../cmps/FlatPreview/FlatPreview';
@@ -12,7 +10,6 @@ import { FlatPreview } from '../../cmps/FlatPreview/FlatPreview';
 @observer
 export class HomePage extends Component {
     componentWillMount() {
-        // console.log(this.props.history)
         this.props.FlatStore.loadFlats();
     }
     render() {

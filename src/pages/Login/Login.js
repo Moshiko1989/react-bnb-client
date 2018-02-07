@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
 // Styles
-import 'bulma/css/bulma.css';
 import './Login.css'
 
 @inject('UserStore')

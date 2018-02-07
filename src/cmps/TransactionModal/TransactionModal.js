@@ -1,5 +1,6 @@
+// Extenions
 import React, { Component } from 'react'
-
+// Styles
 import './TransactionModal.css'
 
 export class TransactionModal extends Component {
@@ -43,31 +44,34 @@ export class TransactionModal extends Component {
     validate = () => {
         if (!this.state.bookStart || !this.state.bookEnd || !this.state.guestCount) {
             this.updateMsg('Please fill all fields');
-            return;
+            return false;
         }
 
         if (+this.state.bookStart.year > +this.state.bookEnd.year) {
             this.updateMsg('Year is  not valid');          
-            return;
+            return false;
         }
 
         if (+this.state.bookStart.month > +this.state.bookEnd.month) {
             this.updateMsg('Month is  not valid');      
-            return;
+            return false;
         }
 
         if (+this.state.bookStart.day > +this.state.bookEnd.day) {
             this.updateMsg('Day is  not valid');           
-            return;
+            return false;
         }
 
         if (+this.state.guestCount <= 0) {
             this.updateMsg('Guest count is not valid');         
-            return;
+            return false;
         }
+        return true;
     }
 
     submitForm = (ev) => {       
+        if (!this.validate()) return;
+
         this.props.onSubmit(this.state);
         this.closeModal(ev);
     }

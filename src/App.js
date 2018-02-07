@@ -1,22 +1,16 @@
 // Extentions
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
-
-// Import { Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-// Visual
+// Styles
 import './App.css';
-// import {Icon} from 'react-fa'
-
+import 'bulma/css/bulma.css';
 // Pages
 import { HomePage } from '../src/pages/HomePage/HomePage';
-// import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { Login } from './pages/Login/Login';
 import { Register } from './pages/Register/Register';
 import { FlatPage } from '../src/pages/Flatpage/FlatPage';
 import { ProfilePage } from './pages/ProfilePage/ProfilePage';
-
 // Components
 import { Header } from './cmps/Header/Header';
 import { Footer } from './cmps/Footer/Footer';
@@ -44,7 +38,7 @@ class App extends Component {
                   <Route exact path="/" render={(props) => <HomePage {...props} />}></Route>
                 </Switch>
             </div>
-            <Footer />
+            <Footer/>
           </div>
         </Router>
       </div >
