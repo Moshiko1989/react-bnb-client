@@ -1,12 +1,10 @@
 // Extensions
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-
 // Components
-import { TransactionModal } from '../../cmps/TransactionModal/TransactionModal'
-
-// CSS
-import './FlatPage.css'
+import { TransactionModal } from '../../cmps/TransactionModal/TransactionModal';
+// Styles
+import './FlatPage.css';
 
 @inject('FlatStore', 'UserStore')
 @observer
@@ -14,12 +12,10 @@ export class FlatPage extends Component {
     state = {
         isModal: false,
     }
+
     componentDidMount() {
         var flatId = this.props.match.params.id;
-        console.log('flatId: ', flatId);
-        // if (!this.props.FlatStore) return <h1>No content, sorry</h1>
         this.props.FlatStore.loadFlatById(flatId)
-        console.log('flat: ', this.props.FlatStore.flatGetter)
     }
 
     toggleLike = () => {
@@ -27,8 +23,10 @@ export class FlatPage extends Component {
             this.props.history.push('/login');
             return;
         }
-        console.log(this.props.FlatStore.flatGetter._id);
+
+        let userId = this.props.UserStore.currUserGetter._id;
         this.props.UserStore.toggleLike(this.props.FlatStore.flatGetter._id);
+        this.props.FlatStore.toggleLike(userId);
     }
 
     openModal = () => {
@@ -45,40 +43,33 @@ export class FlatPage extends Component {
 
     }
 
-    onSubmit = (flatDetails) => {
-        flatDetails.hostId = 'test-test-test';
-        flatDetails.guestId = this.props.UserStore.currUserGetter._id;
-        flatDetails.flatId = this.props.match.params.id;
-        this.props.UserStore.bookFlat(flatDetails);
+    onSubmit = (bookingDetails) => {
+        bookingDetails.hostId = 'test-test-test';
+        bookingDetails.guestId = this.props.UserStore.currUserGetter._id;
+        bookingDetails.flatId = this.props.match.params.id;
+        this.props.UserStore.bookFlat(bookingDetails);
+        this.props.FlatStore.userBooking(bookingDetails);
     }
 
     render() {
 
         var flat = this.props.FlatStore.flatGetter;
         if (!flat) return <h1>Sorry, flat is not available</h1>
-        // console.log({ flat });
 
         const currUser = this.props.UserStore.currUserGetter
 
         var isFlatLiked = false;
         if (currUser) {
-            // console.log(currUser.likedFlatsIds, this.props.flat._id)
             isFlatLiked = currUser.likedFlatsIds.includes(flat._id);
-            // console.log(isFlatLiked)
         }
-
-        // console.log(this.props.flat.userLikedIds)
 
         return (
             <section className="flat-info">
                 {this.state.isModal ? <TransactionModal onSubmit={this.onSubmit} closeModal={this.closeModal} /> : null}
-                {/* <TransactionModal /> */}
                 <div className="img-container">
                     <img className="flat-img" src={flat.imgUrl} alt="flat" />
                     <div onClick={this.toggleLike} className="heart">
                         {
-                            // Required changes, when server added!!!!!!!!!!!!!!!!!!!!!
-                            /* (isFlatLiked && this.props.flat.userLikedIds) ? */
                             (isFlatLiked) ?
                                 <i className="fa fa-heart" aria-hidden="true" ></i>
                                 :

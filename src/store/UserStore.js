@@ -1,35 +1,34 @@
+// Extenions
 import { computed, observable, action, autorun } from 'mobx';
-import UserService from '../services/UserService';
+// Services
 import TransacService from '../services/TransacService';
 import StorageService from '../services/StorageService';
-const STORAGE_KEY = 'user';
+import UserService from '../services/UserService';
+import { STORAGE_KEY } from '../services/UserService';
 
+// useStrict(true)
 
 class UserStore {
-
+    // State
     @observable currUser = null
 
+    // Observing functions
     @computed get currUserGetter() {
-        // console.log('computing user')
         return this.currUser;
     }
 
+    // Changing State syncronously
     @action _setUser = (user) => {
         this.currUser = user;
-        // console.log('currUser: ', this.currUser)
     }
 
     @action _removeLike = (flatId) => {
-        var idx = this.currUser.likedFlatsIds.indexOf(flatId)
-        this.currUser.likedFlatsIds.splice(idx, 1)
-        // console.log('removing')
-        console.log(this.currUser)
-
+        var idx = this.currUser.likedFlatsIds.indexOf(flatId);
+        this.currUser.likedFlatsIds.splice(idx, 1);
     }
 
     @action _addLike = (flatId) => {
-        this.currUser.likedFlatsIds.push(flatId)
-        console.log(this.currUser)
+        this.currUser.likedFlatsIds.push(flatId);
     }
 
     @action _clearUser = () => {
@@ -37,16 +36,21 @@ class UserStore {
     }
 
     @action _bookFlat = (bookingDetails) => {
-        this.currUser.bookedFlats.push(bookingDetails);
+        this.currUser.bookings.push(bookingDetails);
     }
 
+    @action _addTransac = (transacId) => {
+        this.currUser.bookedFlatsIds.push(transacId);
+    }
+
+    // Accesses from components & pages
     clearUser = () => {
         this._clearUser()
         UserService.clearUserFromStorage();
     }
 
     addUser = (user) => {
-        UserService.saveUser2(user)
+        UserService.saveUser(user)
             .then(res => {
                 StorageService.save(STORAGE_KEY, res.data);
                 this._setUser(res.data);
@@ -54,24 +58,30 @@ class UserStore {
     }
 
     bookFlat = (bookingDetails) => {
-        // console.log(this.currUser);
-        TransacService.saveTransac(bookingDetails)
+        this._bookFlat(bookingDetails);
+        UserService.updateUser(this.currUser, this.currUser._id)
             .then(res => {
-                console.log('transac server answer', res.data)
-                this._bookFlat(res.data._id);
-                UserService.updateUser(this.currUser, this.currUser._id)
-                    .then(res => {
-                        StorageService.save(STORAGE_KEY, res.data);
-                        this._setUser(res.data);
-                        console.log(this.currUser);
-                    })
+                StorageService.save(STORAGE_KEY, res.data);
+                this._setUser(res.data);
             })
+            
+        // Adding to transacs collection
+        TransacService.saveTransac(bookingDetails)
+        .then(res => {
+            this._addTransac(res.data._id);
+            UserService.updateUser(this.currUser, this.currUser._id)
+                .then(res => {
+                    StorageService.save(STORAGE_KEY, res.data);
+                    this._setUser(res.data);
+                })
+        })
+
     }
 
     loadUser = (credentials) => {
-        // console.log('loadUser ran');       
         UserService.loadUser(credentials)
             .then((res) => {
+                
                 StorageService.save(STORAGE_KEY, res.data);
                 this._setUser(res.data);
             })
@@ -90,14 +100,7 @@ class UserStore {
             })
     }
 
-    getLikedFlats = () => {
-        // return Service.getByIds(this.user.liked)
-
-
-    }
-
     _loadUser = autorun(() => {
-        // console.log('autorun ran... _loadUser ran')
         let user = UserService.loadPrevUser()
         this._setUser(user);
     })

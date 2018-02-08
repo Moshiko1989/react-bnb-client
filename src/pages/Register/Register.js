@@ -1,11 +1,10 @@
 // Extentions
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
-// Will be used synchronously
-import UserService from '../../services/UserService';
-// Style
-import 'bulma/css/bulma.css';
+// Styles
 import './Register.css';
+// Services
+import UserService from '../../services/UserService';
 
 @inject('UserStore')
 export class Register extends Component {
@@ -17,56 +16,57 @@ export class Register extends Component {
     }
     submit = (e) => {
         e.preventDefault();
-        var user = this.state.user;
-        console.log('user is: ', user);
-        if (user.password !== user.passwordValid) {
-            console.log('Password invalid');
+        let user = this.validate();
+        if (!user) {
             return;
+        } else {
+            this.props.UserStore.addUser(user);
         }
-        this.props.UserStore.addUser(user);
         this.props.history.goBack();
-        
     }
-    // onInputChange = (field) => {
-    //     return (e) => {
-    //         const newUser = {
-    //             ...this.state.user,
-    //             [field]: e.target.value
-    //         }
-    //         this.setState({ user: newUser })
-    //         // console.log(this.state.user)
-    //     }
-    // }
+
+    validate = () => {
+        var user = this.state.user;
+
+        if (
+            !user.name ||
+            !user.password ||
+            !user.email
+        ) {
+            this.updateMsg('Please fill out all fields');
+            return false;
+        }
+        if (user.password !== user.passwordValid) {
+            this.updateMsg('Passwords do not match');
+            return false;
+        }
+        return user;
+    }
+
+    updateMsg = (msg) => {
+        this.refs.msg.innerText = msg;
+        this.refs.msg.style.visibility = 'visible';
+        this.refs.msg.style.opacity = '0.5';
+    }
 
     onInputChange = (par, ev) => {
-        // console.log('this.refs[par]: ', this.refs[par])
         const newUser = {
             ...this.state.user,
             [par]: ev.target.value
         };
-
-        // console.log('this.refs[par]: ', this.refs[par])
-        // console.log('ev.target.value: ', ev.target.value)
-        // console.log('newUser: ', newUser)
-
         this.setState({ user: newUser });
-
     }
 
     render() {
         if (!this.state.user) return <div>no user</div>
         return (
             <form onSubmit={this.submit} className="register">
-                <input onChange={this.onInputChange.bind(this, 'name')} ref="name" type="text" placeholder="Name" required/>
-                <input onChange={this.onInputChange.bind(this, 'password')} ref="password" type="password" placeholder="Password" required/>
+                <input onChange={this.onInputChange.bind(this, 'name')} ref="name" type="text" placeholder="Name" />
+                <input onChange={this.onInputChange.bind(this, 'password')} ref="password" type="password" placeholder="Password" />
                 <input onChange={this.onInputChange.bind(this, 'passwordValid')} ref="passwordValid" type="password" placeholder="Password again" />
-                <input onChange={this.onInputChange.bind(this, 'email')} ref="email" type="email" placeholder="Email" required/>
+                <input onChange={this.onInputChange.bind(this, 'email')} ref="email" type="email" placeholder="Email"/>
                 <button className="button is-link">Register</button>
-                {/* <input onChange={this.onInputChange('name')} type="text" placeholder="Name" />
-                <input onChange={this.onInputChange('passWord')} type="password" placeholder="Password" />
-                <input  type="password" placeholder="password verification" />
-                <input onChange={this.onInputChange('email')} type="email" placeholder="Email" />
-                <button className="button is-link">Register</button> */}
+                <p className="msg" ref="msg">Please fill out all fields</p>
             </form>
         )
     }

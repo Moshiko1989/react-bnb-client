@@ -1,8 +1,7 @@
+// Extentions
 import React from 'react'; 
-
-// Style
+// Styles
 import './Footer.css'
-
 
 export const Footer = () => {
 
