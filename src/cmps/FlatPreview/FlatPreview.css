@@ -1,9 +1,9 @@
 .flat-preview {
   background-color: white;
-  height: 270px;
   width: 320px;
   margin: 1%;
   position: relative;
+  box-shadow: 0px 0px 5px 0px lightgray;
   overflow: hidden; }
   .flat-preview .heart {
     position: absolute;
@@ -23,12 +23,14 @@
     color: #fd5c63; }
   .flat-preview .img-container img {
     height: 60%;
-    width: 100%; }
+    width: 100%;
+    max-height: 180px; }
   .flat-preview .flat-txt-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 20%; }
+    height: 20%;
+    padding: 0 20px 5px; }
     .flat-preview .flat-txt-container .flat-txt {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -42,3 +44,7 @@
 
 .flat-preview:hover {
   opacity: .7; }
+
+@media screen and (max-width: 709px) {
+  .flat-preview {
+    margin: 20px 0; } }

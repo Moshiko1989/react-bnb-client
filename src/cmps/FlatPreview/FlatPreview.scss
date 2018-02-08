@@ -1,13 +1,10 @@
 @import '../../css/_vars.scss';
 .flat-preview {
     background-color: white;
-    height: 270px;
-    // width: 25vw;
-    // min-width: 320px;
     width: 320px;
     margin: 1%;
     position: relative;
-    // box-shadow: 0px 0px 5px 0px $secondary-color;
+    box-shadow: 0px 0px 5px 0px lightgray;
     overflow: hidden;
 
     .heart {
@@ -28,14 +25,13 @@
         }
     }
     a {
-        // color: black;
         color: $secondary-color;
     }
     .img-container {
         img {
-            // padding: 1%;
             height: 60%;
             width: 100%;
+            max-height: 180px;
         }
     }
     .flat-txt-container {
@@ -43,7 +39,7 @@
         flex-direction: column;
         justify-content: flex-start;
         height: 20%;
-        // padding: 0 20px;
+        padding: 0 20px 5px;
 
         .flat-txt {
             overflow: hidden;
@@ -63,3 +59,13 @@
 .flat-preview:hover {
     opacity: .7;
 }
+
+@media screen and (max-width: 709px ) {
+    .flat-preview {
+        margin: 20px 0;
+        // width: 80vw;
+        
+    }
+}
+
+
