@@ -88,8 +88,11 @@ export class TransactionModal extends Component {
                         </header>
                         <section className="modal-card-body">
                             <form onSubmit={(e) => e.preventDefault()}>
+                                <p>Date Start:</p>
                                 <input onChange={this.onInputChange.bind(this, 'bookStart')} type="date" />
+                                <p>Date end:</p>
                                 <input onChange={this.onInputChange.bind(this, 'bookEnd')} type="date" />
+                                <p>How many will you be?</p>
                                 <input onChange={this.onInputChange.bind(this, 'guestCount')} type="number" />
                                 <p className="msg" ref="msg">MSG</p>
                             </form>

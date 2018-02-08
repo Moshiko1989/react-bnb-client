@@ -81,6 +81,7 @@ class UserStore {
     loadUser = (credentials) => {
         UserService.loadUser(credentials)
             .then((res) => {
+                
                 StorageService.save(STORAGE_KEY, res.data);
                 this._setUser(res.data);
             })

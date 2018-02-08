@@ -15,6 +15,7 @@ export class HomePage extends Component {
     render() {
         return (
             <main className="main-home">
+            <button>+</button>
                 <ul>
                     {
                         this.props.FlatStore.flatsGetter.map((flat) => {
@@ -23,6 +24,7 @@ export class HomePage extends Component {
                         })
                     }
                 </ul>
+                <button>-</button>
             </main>
         )
     }

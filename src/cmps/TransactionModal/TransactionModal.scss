@@ -21,14 +21,17 @@
                         margin: 0 auto;
                         margin-bottom: 1vh;
                 }
+                p {
+                    text-align: left;    
+                    margin: 0 auto;       
+                    width: 50%;
+                    padding-bottom: 3px;
+                }
                 .msg {
                     visibility: hidden;
                     padding: 1em 1em 0 0;
                     opacity: 0;
                     color: $secondary-color;
-                    width: 50%;
-                    margin: 0 auto;       
-                    text-align: left;    
                     transition: all .8s;        
                 }
             }

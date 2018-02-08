@@ -16,15 +16,37 @@ export class Register extends Component {
     }
     submit = (e) => {
         e.preventDefault();
-        var user = this.state.user;
-        if (user.password !== user.passwordValid) {
-            console.log('Password invalid');
+        let user = this.validate();
+        if (!user) {
             return;
+        } else {
+            this.props.UserStore.addUser(user);
         }
-        
-        this.props.UserStore.addUser(user);
         this.props.history.goBack();
-        
+    }
+
+    validate = () => {
+        var user = this.state.user;
+
+        if (
+            !user.name ||
+            !user.password ||
+            !user.email
+        ) {
+            this.updateMsg('Please fill out all fields');
+            return false;
+        }
+        if (user.password !== user.passwordValid) {
+            this.updateMsg('Passwords do not match');
+            return false;
+        }
+        return user;
+    }
+
+    updateMsg = (msg) => {
+        this.refs.msg.innerText = msg;
+        this.refs.msg.style.visibility = 'visible';
+        this.refs.msg.style.opacity = '0.5';
     }
 
     onInputChange = (par, ev) => {
@@ -39,11 +61,12 @@ export class Register extends Component {
         if (!this.state.user) return <div>no user</div>
         return (
             <form onSubmit={this.submit} className="register">
-                <input onChange={this.onInputChange.bind(this, 'name')} ref="name" type="text" placeholder="Name" required/>
-                <input onChange={this.onInputChange.bind(this, 'password')} ref="password" type="password" placeholder="Password" required/>
+                <input onChange={this.onInputChange.bind(this, 'name')} ref="name" type="text" placeholder="Name" />
+                <input onChange={this.onInputChange.bind(this, 'password')} ref="password" type="password" placeholder="Password" />
                 <input onChange={this.onInputChange.bind(this, 'passwordValid')} ref="passwordValid" type="password" placeholder="Password again" />
-                <input onChange={this.onInputChange.bind(this, 'email')} ref="email" type="email" placeholder="Email" required/>
+                <input onChange={this.onInputChange.bind(this, 'email')} ref="email" type="email" placeholder="Email"/>
                 <button className="button is-link">Register</button>
+                <p className="msg" ref="msg">Please fill out all fields</p>
             </form>
         )
     }

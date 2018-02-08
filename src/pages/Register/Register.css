@@ -10,7 +10,8 @@
   transition: all .6s; }
   .register input, .register button {
     margin: 2vh auto;
-    width: 50%; }
+    width: 50%;
+    min-width: 142px; }
   .register input {
     padding: 1em;
     border: none;
@@ -23,6 +24,15 @@
     background-color: red; }
   .register input:focus {
     outline-color: #fd5c63; }
+  .register .msg {
+    visibility: hidden;
+    padding: 1em 1em 0 0;
+    opacity: 0;
+    color: #fd5c63;
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+    transition: all .8s; }
 
 .register:hover {
   box-shadow: 0;
