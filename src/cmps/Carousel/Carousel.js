@@ -2,37 +2,37 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 // Styles
-import './HomePage.css';
+import './Carousel.css';
 // Components
-import { Carousel } from '../../cmps/Carousel/Carousel';
+import { FlatPreview } from '../FlatPreview/FlatPreview';
+
 
 @inject('FlatStore')
 @observer
-export class HomePage extends Component {
+export class Carousel extends Component {
     state = {
         canMove: true
     }
-    componentWillMount() {
-        this.props.FlatStore.loadFlats();
+
+    holdTime = () => {
+        this.setState({ canMove: false })
+        setTimeout(() => {
+            this.setState({ canMove: true })
+        }, 650)
     }
+
     nextCard = () => {
         if (!this.state.canMove) return;
         const elCarousel = document.querySelector('.carousel');
         if (elCarousel.style.left === '') {
             elCarousel.style.left = '-400px'
-            this.setState({ canMove: false })
-            setTimeout(() => {
-                this.setState({ canMove: true })
-            }, 1000)
+            this.holdTime()
         } else {
             if (elCarousel.style.left === '-4000px') return;
             let leftInt = parseInt(elCarousel.style.left, 10);
             leftInt += -400;
             elCarousel.style.left = `${leftInt}px`
-            this.setState({ canMove: false })
-            setTimeout(() => {
-                this.setState({ canMove: true })
-            }, 1000)
+            this.holdTime()
         }
     }
 
@@ -43,29 +43,26 @@ export class HomePage extends Component {
         if (elCarousel.style.left === '0px') return;
         leftInt += 400;
         elCarousel.style.left = `${leftInt}px`
-        this.setState({ canMove: false })
-        setTimeout(() => {
-            this.setState({ canMove: true })
-        }, 1000)
+        this.holdTime()
     }
+
 
     render() {
         return (
-            <main className="main-home">
-                <ul>
-
-                    <li>
-                        <Carousel idx={1}/>
-                    </li>
-                    <li>
-                        <Carousel idx={2}/>
-                    </li>
-                    <li>
-                        <Carousel idx={3}/>
-                    </li>
+            <content>
+                <div className="btns">
+                    <button onClick={this.nextCard}>+</button>
+                    <button onClick={this.prevCard}>-</button>
+                </div>
+                <ul className="carousel">
+                    {
+                        this.props.FlatStore.flatsGetter.map((flat) => {
+                            return <FlatPreview key={flat._id} flat={flat}
+                                history={this.props.history} />
+                        })
+                    }
                 </ul>
-            </main>
+            </content>
         )
     }
 }
-

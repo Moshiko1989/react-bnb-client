@@ -1,0 +1,15 @@
+content .btns {
+  width: 95%;
+  margin: 0 auto;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between; }
+
+content .carousel {
+  position: absolute;
+  left: 0px;
+  display: flex;
+  width: 100vw;
+  transition: left 1s; }
+  content .carousel .flat-preview {
+    min-width: 400px; }

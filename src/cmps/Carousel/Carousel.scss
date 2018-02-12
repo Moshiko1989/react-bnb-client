@@ -1,0 +1,25 @@
+@import '../../css/_vars.scss';
+
+content {
+    // position: relative;
+    .btns {
+        // background-color:black;
+        width: 95%;
+        margin: 0 auto;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        
+     
+    }
+    .carousel {
+        position: absolute;
+        left: 0px;
+        display: flex;
+        width: 100vw;
+        transition: left 1s;
+        .flat-preview {
+            min-width: 400px;
+        }
+    }
+}

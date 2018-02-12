@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 // Styles
+import 'bulma/css/bulma.css';
 import './FlatPreview.css';
 
 @inject('UserStore', 'FlatStore')

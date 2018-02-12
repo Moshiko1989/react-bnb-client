@@ -1,8 +1,3 @@
-.main-home ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 0;
-  margin: 0 auto;
-  margin-top: 2vh;
-  overflow: hidden; }
+.main-home li {
+  height: 250px;
+  margin-bottom: 50px; }
