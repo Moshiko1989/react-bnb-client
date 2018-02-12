@@ -13,7 +13,7 @@ export class FlatPreview extends Component {
     toggleLike = () => {
 
         if (!this.props.UserStore.currUserGetter) {
-            this.props.history.push('/login');
+            // this.props.history.push('/login');
             return;
         }
 
@@ -35,7 +35,7 @@ export class FlatPreview extends Component {
 
         // console.log(this.props.flat.userLikedIds)
         return (
-            <li className="flat-preview">
+            <div className="flat-preview">
                 <div onClick={this.toggleLike} className="heart">
                     {
                         // Required changes, when server added!!!!!!!!!!!!!!!!!!!!!
@@ -55,7 +55,7 @@ export class FlatPreview extends Component {
                         <h4 className="flat-txt">{this.props.flat.address}</h4>
                     </aside>
                 </NavLink>
-            </li>
+            </div>
         )
     }
 }

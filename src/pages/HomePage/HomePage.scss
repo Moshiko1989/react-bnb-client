@@ -1,33 +1,8 @@
 @import '../../css/_vars.scss';
 .main-home {
-    // position: relative;
-        li {
-            height: 250px;
-            margin-bottom: 50px;
-        }
-    // .carousel {
-    //     position: absolute;
-    //     left: 0px;
-    //     display: flex;
-    //     width: 100vw;
-    //     transition: all 1s;
-    //     .flat-preview {
-    //         min-width: 400px;
-    //     }
-    // }
+    li {
+        height: 250px;
+        margin-bottom: 50px;
+    }
 }
-
-// .main-home {
-//     ul {
-//         display: flex;
-//         flex-direction: row;
-//         justify-content: space-around;
-//         flex-wrap: wrap; 
-//         // max-width: 90vw;
-//         padding: 0;
-//         margin: 0 auto;
-//         margin-top: 2vh;
-//         // overflow: hidden;
-//     }
-// }
 

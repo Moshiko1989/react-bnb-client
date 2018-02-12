@@ -1,25 +1,29 @@
 @import '../../css/_vars.scss';
 
-content {
-    // position: relative;
+.carousel-wrapper {
     .btns {
-        // background-color:black;
         width: 95%;
         margin: 0 auto;
         z-index: 1;
         display: flex;
         justify-content: space-between;
+
+        .fa-arrow-circle-left, .fa-arrow-circle-right {
+            cursor: pointer;
+            color: $secondary-color;
+        }
         
      
     }
     .carousel {
-        position: absolute;
-        left: 0px;
         display: flex;
-        width: 100vw;
-        transition: left 1s;
+        width: 1220px;
+        margin: 0 auto;
+        background-color: red;
+        overflow: hidden;
         .flat-preview {
             min-width: 400px;
+            transition: transform 1s;
         }
     }
 }

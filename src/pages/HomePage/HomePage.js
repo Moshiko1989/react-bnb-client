@@ -53,15 +53,14 @@ export class HomePage extends Component {
         return (
             <main className="main-home">
                 <ul>
-
                     <li>
-                        <Carousel idx={1}/>
+                        <Carousel  keyWord={'taiwan'}/>
                     </li>
                     <li>
-                        <Carousel idx={2}/>
+                        <Carousel  keyWord={'cuba'}/>
                     </li>
                     <li>
-                        <Carousel idx={3}/>
+                        <Carousel  keyWord={'poland'}/>
                     </li>
                 </ul>
             </main>

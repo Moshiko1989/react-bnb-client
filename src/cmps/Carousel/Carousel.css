@@ -1,15 +1,19 @@
-content .btns {
+.carousel-wrapper .btns {
   width: 95%;
   margin: 0 auto;
   z-index: 1;
   display: flex;
   justify-content: space-between; }
+  .carousel-wrapper .btns .fa-arrow-circle-left, .carousel-wrapper .btns .fa-arrow-circle-right {
+    cursor: pointer;
+    color: #fd5c63; }
 
-content .carousel {
-  position: absolute;
-  left: 0px;
+.carousel-wrapper .carousel {
   display: flex;
-  width: 100vw;
-  transition: left 1s; }
-  content .carousel .flat-preview {
-    min-width: 400px; }
+  width: 1220px;
+  margin: 0 auto;
+  background-color: red;
+  overflow: hidden; }
+  .carousel-wrapper .carousel .flat-preview {
+    min-width: 400px;
+    transition: transform 1s; }
