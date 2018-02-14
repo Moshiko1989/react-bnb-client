@@ -10,26 +10,13 @@
     border: 1px solid rgba(0, 0, 0, 0);
     transition: all .6s;
 
-    input,button {
+    .button, .is-link {
         margin: 2vh auto;
         width: 50%;
-    }
-
-    input {
-        padding: 1em;
-        border: none;
-        border-bottom: 1px solid $secondary-color;
-        font-family: $font-family-txt;
-        background-color: #F6F4F4;
-    }
-    .button, .is-link {
         background-color: $secondary-color;
     }
     .button:hover, .is-link:hover {
         background-color: red;
-    }
-    input:focus{
-        outline-color: $secondary-color;
     }
 
     p {
@@ -37,11 +24,11 @@
        margin: 0 auto;
        width: 50%;
        color: $secondary-color; 
+       padding: 1em 1em 0 0;
     }
 
     .msg {
         visibility: hidden;
-        padding: 1em 1em 0 0;
         opacity: 0;
         transition: all .8s;        
     }
@@ -54,14 +41,11 @@
 @media screen and (max-width: 1000px ) {
     .login {
         width: 45vw;
-        height: 45vh;
         
     }
 }
 @media screen and (max-width: 660px ) {
     .login {
-        width: 80vw;
-        height: 45vh;
-        
+        width: 90vw;
     }
 }

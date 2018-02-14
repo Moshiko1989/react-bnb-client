@@ -28,18 +28,13 @@ export class FlatPreview extends Component {
 
         var isFlatLiked = false;
         if (currUser) {
-            // console.log(currUser.likedFlatsIds, this.props.flat._id)
             isFlatLiked = currUser.likedFlatsIds.includes(this.props.flat._id);
-            // console.log(isFlatLiked)
         }
 
-        // console.log(this.props.flat.userLikedIds)
         return (
             <div className="flat-preview">
                 <div onClick={this.toggleLike} className="heart">
                     {
-                        // Required changes, when server added!!!!!!!!!!!!!!!!!!!!!
-                        /* (isFlatLiked && this.props.flat.userLikedIds) ? */ 
                             (isFlatLiked) ?
                             <i className="fa fa-heart" aria-hidden="true" ></i>
                             :

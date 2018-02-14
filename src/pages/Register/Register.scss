@@ -1,7 +1,6 @@
 @import '../../css/_vars.scss';
 .register {
     width: 50vw;
-    // min-width: 200px;
     height: 60vh;
     margin: 10vh auto;
     display: flex;
@@ -21,7 +20,7 @@
         border: none;
         border-bottom: 1px solid $secondary-color;
         font-family: $font-family-txt;
-        background: #F6F4F4;
+        background-color: #F6F4F4;
     }
     .button, .is-link {
         background-color: $secondary-color;
@@ -33,13 +32,13 @@
         outline-color: $secondary-color;
     }
     .msg {
+        text-align: left;    
+        margin: 0 auto;       
+        width: 50%;
+        color: $secondary-color;
         visibility: hidden;
         padding: 1em 1em 0 0;
         opacity: 0;
-        color: $secondary-color;
-        width: 50%;
-        margin: 0 auto;       
-        text-align: left;    
         transition: all .8s;        
     }
 }
@@ -53,6 +52,5 @@
 @media screen and (max-width: 540px ) {
     .register {
         width: 90vw;
-        
     }
 }

@@ -15,54 +15,20 @@ export class HomePage extends Component {
     componentWillMount() {
         this.props.FlatStore.loadFlats();
     }
-    nextCard = () => {
-        if (!this.state.canMove) return;
-        const elCarousel = document.querySelector('.carousel');
-        if (elCarousel.style.left === '') {
-            elCarousel.style.left = '-400px'
-            this.setState({ canMove: false })
-            setTimeout(() => {
-                this.setState({ canMove: true })
-            }, 1000)
-        } else {
-            if (elCarousel.style.left === '-4000px') return;
-            let leftInt = parseInt(elCarousel.style.left, 10);
-            leftInt += -400;
-            elCarousel.style.left = `${leftInt}px`
-            this.setState({ canMove: false })
-            setTimeout(() => {
-                this.setState({ canMove: true })
-            }, 1000)
-        }
-    }
-
-    prevCard = () => {
-        if (!this.state.canMove) return;
-        const elCarousel = document.querySelector('.carousel');
-        let leftInt = parseInt(elCarousel.style.left, 10);
-        if (elCarousel.style.left === '0px') return;
-        leftInt += 400;
-        elCarousel.style.left = `${leftInt}px`
-        this.setState({ canMove: false })
-        setTimeout(() => {
-            this.setState({ canMove: true })
-        }, 1000)
-    }
 
     render() {
+        if (!this.props.FlatStore.flatsGetter) return <div>not ready</div>
         return (
-            <main className="main-home">
-                <ul>
-                    <li>
+            <main className="main-home" >
+                    <div className="home-li">
                         <Carousel  keyWord={'taiwan'}/>
-                    </li>
-                    <li>
+                    </div >
+                    <div className="home-li">
                         <Carousel  keyWord={'cuba'}/>
-                    </li>
-                    <li>
+                    </div>
+                    <div className="home-li">
                         <Carousel  keyWord={'poland'}/>
-                    </li>
-                </ul>
+                    </div>
             </main>
         )
     }

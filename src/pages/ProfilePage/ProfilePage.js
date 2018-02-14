@@ -30,15 +30,12 @@ export class ProfilePage extends Component {
         }
         return (
             <main className="main-home">
-                <ul>
-
-                    <li>
+                    <div>
                         <Carousel  keyWord={'likedByUser'} />
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <Carousel  keyWord={'bookedByUser'}/>
-                    </li>
-                </ul>
+                    </div>
             </main>
         )
     }

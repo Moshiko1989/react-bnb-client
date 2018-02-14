@@ -8,29 +8,20 @@
   box-shadow: 0px 0px 9.5px -2px grey;
   border: 1px solid transparent;
   transition: all .6s; }
-  .login input, .login button {
-    margin: 2vh auto;
-    width: 50%; }
-  .login input {
-    padding: 1em;
-    border: none;
-    border-bottom: 1px solid #fd5c63;
-    font-family: Helvetica, sans-serif;
-    background-color: #F6F4F4; }
   .login .button, .login .is-link {
+    margin: 2vh auto;
+    width: 50%;
     background-color: #fd5c63; }
   .login .button:hover, .login .is-link:hover {
     background-color: red; }
-  .login input:focus {
-    outline-color: #fd5c63; }
   .login p {
     text-align: left;
     margin: 0 auto;
     width: 50%;
-    color: #fd5c63; }
+    color: #fd5c63;
+    padding: 1em 1em 0 0; }
   .login .msg {
     visibility: hidden;
-    padding: 1em 1em 0 0;
     opacity: 0;
     transition: all .8s; }
 
@@ -40,10 +31,8 @@
 
 @media screen and (max-width: 1000px) {
   .login {
-    width: 45vw;
-    height: 45vh; } }
+    width: 45vw; } }
 
 @media screen and (max-width: 660px) {
   .login {
-    width: 80vw;
-    height: 45vh; } }
+    width: 90vw; } }

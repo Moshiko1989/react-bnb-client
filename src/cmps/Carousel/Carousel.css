@@ -1,19 +1,37 @@
-.carousel-wrapper .btns {
-  width: 95%;
+.carousel-component .btns {
+  position: relative;
+  width: 100vw;
+  max-width: 1300px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(140px);
   z-index: 1;
-  display: flex;
-  justify-content: space-between; }
-  .carousel-wrapper .btns .fa-arrow-circle-left, .carousel-wrapper .btns .fa-arrow-circle-right {
+  height: 1.6em; }
+  .carousel-component .btns .fa-arrow-circle-left, .carousel-component .btns .fa-arrow-circle-right {
     cursor: pointer;
-    color: #fd5c63; }
+    color: #fd5c63;
+    font-size: 1.2em;
+    transition: all .2s; }
+  .carousel-component .btns .fa-arrow-circle-right {
+    padding-right: 1em; }
+  .carousel-component .btns .fa-arrow-circle-left:hover, .carousel-component .btns .fa-arrow-circle-right:hover {
+    font-size: 1.5em; }
 
-.carousel-wrapper .carousel {
-  display: flex;
-  width: 1220px;
-  margin: 0 auto;
-  background-color: red;
-  overflow: hidden; }
-  .carousel-wrapper .carousel .flat-preview {
-    min-width: 400px;
-    transition: transform 1s; }
+.carousel-component .carousel-wrapper {
+  width: 90vw;
+  max-width: 1130px;
+  overflow: hidden;
+  margin: 0 auto; }
+  .carousel-component .carousel-wrapper .carousel {
+    display: flex; }
+    .carousel-component .carousel-wrapper .carousel .prv-wrapper {
+      min-width: 370px;
+      margin-right: 10px;
+      transition: transform 1s; }
+
+@media screen and (max-width: 420px) {
+  .carousel-component .btns {
+    font-size: 1.5em; }
+    .carousel-component .btns .fa-arrow-circle-right {
+      padding-right: .05em; } }

@@ -4,22 +4,20 @@
 
     .modal-card{
         margin: 30vh auto;
-        // width: 90vw;
         max-width: 540px;
         .modal-card-body {
             form {
                 display: flex;
                 flex-direction: column;
-    
                 input {
-                        padding: 1em;
-                        border: none;
-                        border-bottom: 1px solid $secondary-color;
-                        font-family: $font-family-txt;
-                        background-color: #F6F4F4;
-                        width: 50%;
-                        margin: 0 auto;
-                        margin-bottom: 1vh;
+                    padding: 1em;
+                    border: none;
+                    border-bottom: 1px solid $secondary-color;
+                    font-family: $font-family-txt;
+                    background-color: #F6F4F4;
+                    width: 50%;
+                    margin: 0 auto;
+                    margin-bottom: 1vh;
                 }
                 p {
                     text-align: left;    
@@ -53,7 +51,6 @@
 @media screen and (max-width: 540px ) {
     .modal {
         .modal-card {
-            // max-width: 2000px;
             max-width: 90vw;
         }
     }

@@ -14,97 +14,98 @@ export class Carousel extends Component {
         stopHold: true,
         carouselLength: null,
         validSize: true,
-        previews: <div>previews</div>,
-        title: <div>title</div>
+        previews: <div>not yet</div>,
+        title: <div>not yet</div>,
+        cardSize: 370,
+        marginSize: 10,
     }
 
     componentDidMount() {
-        var keyWord = this.props.keyWord[0].toUpperCase()
-            + this.props.keyWord.slice(1);
-        let previews = null;
-        let title = null;
-        let length = null;
-
         switch (this.props.keyWord) {
-
             case 'likedByUser':
-
-                previews = this.props.FlatStore.userLikedFlatsGetter
-                    .map(flat => {
-                        return <div className={this.props.keyWord} key={flat._id}><FlatPreview flat={flat} /></div>
-                    })
-                title = <h1>Liked Flats</h1>
-                length = (this.props.FlatStore.userLikedFlatsGetter.length * 410) - 820;
-
-                if (length <= 3) {
-                    this.setState({ validSize: false })
-                }
-
-                this.setState({ carouselLength: length, title, previews });
+                this.initState('userLikedFlatsGetter', 'Liked')
                 break;
-
             case 'bookedByUser':
-
-                previews = this.props.FlatStore.bookedByUserGetter
-                    .map(flat => {
-                        return <div className={this.props.keyWord} key={flat._id}><FlatPreview flat={flat} /></div>
-                    })
-                title = <h1>Booked Flats</h1>
-                length = (this.props.FlatStore.bookedByUserGetter.length * 410) - 820;
-
-                if (length <= 3) {
-                    this.setState({ validSize: false })
-                }
-
-                this.setState({ carouselLength: length, title, previews });
+                this.initState('bookedByUserGetter', 'Booked')
                 break;
-
             default:
-                previews = this.props.FlatStore.flatsGetter.filter(flat => {
-                    return flat.country === this.props.keyWord;
-                }).map((flat) => {
-                    return <div className={this.props.keyWord} key={flat._id}><FlatPreview flat={flat} /></div>
-                })
-
-                title = <h1>Flats in {keyWord}</h1>
-                length = (this.props.FlatStore.flatsGetter.filter(flat => {
-                    return flat.country === this.props.keyWord;
-                }).length * 410) - 820;
-
-                this.setState({ carouselLength: length, title, previews });
+                this.initState('flatsGetter', false)
                 break;
         }
     }
 
-    nextCard = () => {
-        if (!this.state.stopHold || !this.state.validSize) return;
-        const flatPrevs = document.querySelectorAll(`.${this.props.keyWord}`);
-        flatPrevs.forEach(flatPrev => {
-            flatPrev.style.transition = 'transform 1s';
-            if (flatPrev.style.transform === '') {
-                flatPrev.style.transform = 'translateX(-410px)'
-                this.holdTime()
-            } else {
-                if (flatPrev.style.transform === `translateX(-${this.state.carouselLength}px)`) return;
-                let leftInt = parseInt(flatPrev.style.transform.slice(11), 10);
-                leftInt += -410;
-                flatPrev.style.transform = `translateX(${leftInt}px)`
-                this.holdTime()
+    initState = (getter, word) => {
+        let keyWord = this.props.keyWord[0].toUpperCase()
+            + this.props.keyWord.slice(1);
+        let previews = null;
+        let title = null;
+        let length = null;
+        let previewFullSize = this.state.cardSize + this.state.marginSize;
+        if (word) {
+            previews = this.props.FlatStore[getter]
+                .map(flat => {
+                    return (
+                        <div className="prv-wrapper" key={flat._id}>
+                            <FlatPreview flat={flat} />
+                        </div>
+                    )
+                })
+            title = <h1>{word} Flats</h1>
+            length =
+                (this.props.FlatStore[getter].length * previewFullSize) -
+                (2 * previewFullSize);
+
+            if (length <= 3) {
+                this.setState({ validSize: false })
             }
-        });
+        } else {
+            previews = this.props.FlatStore[getter].filter(flat => {
+                return flat.country === this.props.keyWord;
+            }).map((flat) => {
+                return (
+                    <div className="prv-wrapper" key={flat._id}>
+                        <FlatPreview flat={flat} />
+                    </div>
+                )
+            })
+
+            title = <h1>Flats in {keyWord}</h1>
+            length = (this.props.FlatStore[getter].filter(flat => {
+                return flat.country === this.props.keyWord;
+            }).length * previewFullSize) - (2 * previewFullSize);
+
+        }
+
+        this.setState({ carouselLength: length, title, previews });
+    }
+
+    nextCard = () => {
+        let previewFullSize = this.state.cardSize + this.state.marginSize;
+        if (!this.state.stopHold || !this.state.validSize) return;
+        const flatPrev = document.querySelector(`.${this.props.keyWord}`);
+        flatPrev.style.transition = 'transform 1s';
+        if (flatPrev.style.transform === '') {
+            flatPrev.style.transform = `translateX(-${previewFullSize}px)`
+            this.holdTime()
+        } else {
+            if (flatPrev.style.transform === `translateX(-${this.state.carouselLength}px)`) return;
+            let leftInt = parseInt(flatPrev.style.transform.slice(11), 10);
+            leftInt += -previewFullSize;
+            flatPrev.style.transform = `translateX(${leftInt}px)`
+            this.holdTime()
+        }
     }
 
     prevCard = () => {
+        let previewFullSize = this.state.cardSize + this.state.marginSize;
         if (!this.state.stopHold) return;
-        const flatPrevs = document.querySelectorAll(`.${this.props.keyWord}`);
-        flatPrevs.forEach(flatPrev => {
-            flatPrev.style.transition = 'transform 1s';
-            let leftInt = parseInt(flatPrev.style.transform.slice(11), 10);
-            if (flatPrev.style.transform === 'translateX(0px)') return;
-            leftInt += 410;
-            flatPrev.style.transform = `translateX(${leftInt}px)`
-            this.holdTime()
-        })
+        const flatPrev = document.querySelector(`.${this.props.keyWord}`);
+        flatPrev.style.transition = 'transform 1s';
+        let leftInt = parseInt(flatPrev.style.transform.slice(11), 10);
+        if (flatPrev.style.transform === 'translateX(0px)') return;
+        leftInt += previewFullSize;
+        flatPrev.style.transform = `translateX(${leftInt}px)`
+        this.holdTime()
     }
 
     holdTime = () => {
@@ -115,17 +116,21 @@ export class Carousel extends Component {
     }
 
     render() {
+        if (!this.props.FlatStore.flatsGetter) return <div>not yet</div>
+        let length = this.props.FlatStore.flatsGetter.length;
         return (
-            <content className="carousel-wrapper">
+            <div className="carousel-component">
                 <div className="btns">
                     <i onClick={this.prevCard} className="fa fa-arrow-circle-left"></i>
                     <i onClick={this.nextCard} className="fa fa-arrow-circle-right"></i>
                 </div>
-                {this.state.title}
-                <ul className={`carousel`}>
-                    {this.state.previews}
-                </ul>
-            </content>
+                <div className="carousel-wrapper">
+                    {this.state.title}
+                    <ul className={`carousel ${this.props.keyWord}`}>
+                        {length ? this.state.previews : <div>null</div>}
+                    </ul>
+                </div>
+            </div>
         )
     }
 }

@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
 import { NavLink } from 'react-router-dom';
+// Components
+import { Input } from '../../cmps/Input/Input';
 // Styles
 import './Login.css'
 
@@ -9,8 +11,7 @@ import './Login.css'
 export class Login extends Component {
     state = {
         userCredentials: {
-            name: '',
-            password: '',
+
         }
     }
 
@@ -29,7 +30,7 @@ export class Login extends Component {
         this.refs.msg.innerText = msg;
         this.refs.msg.style.visibility = 'visible';
         this.refs.msg.style.opacity = '0.5';
-    } 
+    }
 
     validate = () => {
         if (
@@ -49,7 +50,7 @@ export class Login extends Component {
         this.handleServerResponse();
     }
 
-    onInputChange(field, ev) {
+    onInputChange = (field, ev) => {
         const newUser = {
             ...this.state.userCredentials,
             [field]: ev.target.value,
@@ -60,11 +61,14 @@ export class Login extends Component {
     render() {
         return (
             <form onSubmit={this.submit} className="login">
-                <input onChange={this.onInputChange.bind(this, 'name')} ref="name" type="text" placeholder="Name" />
-                <input onChange={this.onInputChange.bind(this, 'password')} ref="password" type="password" placeholder="Password" />
+                <Input onChange={this.onInputChange} type="text"
+                    placeholder="Name" field={"name"}/>
+                <Input onChange={this.onInputChange} type="password" placeholder="Password" field={"password"}/>
+
                 <button className="button is-link">Log In</button>
+
                 <NavLink to="/signup">
-                <p>Not registered yet?</p>
+                    <p className="link-register">Not registered yet?</p>
                 </NavLink>
                 <p className="msg" ref="msg">Please fill out both name and password</p>
             </form>

@@ -1,9 +1,6 @@
 .flat-preview {
   background-color: white;
-  width: 320px;
-  margin: 0 10px 0 0;
-  position: relative;
-  box-shadow: 0px 0px 5px 0px lightgray; }
+  position: relative; }
   .flat-preview .heart {
     position: absolute;
     right: 10%;
@@ -47,3 +44,7 @@
 @media screen and (max-width: 709px) {
   .flat-preview {
     margin: 20px 0; } }
+
+@media screen and (max-width: 420px) {
+  .flat-preview {
+    width: 93vw; } }

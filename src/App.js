@@ -22,14 +22,12 @@ class App extends Component {
     this.props.FlatStore.loadFlats()
   }
   render() {
-    var tests = this.props.FlatStore.flatsGetter.map(flat => <p>{flat._id}</p>)
     return (
       <div className="App">
         <Router>
           <div className="outer-wrapper">
             <div className="switch-header">
               <Header props={this.props} />
-              {tests}
                 <Switch className="switch">
                   <Route exact path="/flat/:id" render={(props) => <FlatPage {...props} />}></Route>
                   <Route path="/signup" component={Register} />

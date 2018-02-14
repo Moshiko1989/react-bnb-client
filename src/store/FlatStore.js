@@ -7,7 +7,7 @@ useStrict(true)
 
 class FlatObservableStore {
 	// State
-	@observable flats = [];
+	@observable flats = null;
 	@observable currFlat = null;
 	@observable bookedByUser = null;
 	@observable userLikedFlats = null;
