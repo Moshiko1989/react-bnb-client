@@ -1,8 +1,10 @@
 // Extentions
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
+// Components
+import { Input } from '../../cmps/Input/Input';
 // Styles
-import './Register.css';
+// import './Register.css';
 // Services
 import UserService from '../../services/UserService';
 
@@ -10,6 +12,7 @@ import UserService from '../../services/UserService';
 export class Register extends Component {
     state = {
         user: null,
+        msgClass: ''        
     }
     componentDidMount() {
         this.setState({ user: UserService.getEmptyUser() });
@@ -34,10 +37,12 @@ export class Register extends Component {
             !user.email
         ) {
             this.updateMsg('Please fill out all fields');
+            this.setState({msgClass: 'updated'})
             return false;
         }
         if (user.password !== user.passwordValid) {
-            this.updateMsg('Passwords do not match');
+            this.updateMsg('Password do not match');
+            this.setState({msgClass: 'updated'})
             return false;
         }
         return user;
@@ -45,8 +50,6 @@ export class Register extends Component {
 
     updateMsg = (msg) => {
         this.refs.msg.innerText = msg;
-        this.refs.msg.style.visibility = 'visible';
-        this.refs.msg.style.opacity = '0.5';
     }
 
     onInputChange = (par, ev) => {
@@ -59,14 +62,19 @@ export class Register extends Component {
 
     render() {
         if (!this.state.user) return <div>no user</div>
+            let msgClass = this.state.msgClass;
         return (
-            <form onSubmit={this.submit} className="register">
-                <input onChange={this.onInputChange.bind(this, 'name')} ref="name" type="text" placeholder="Name" />
-                <input onChange={this.onInputChange.bind(this, 'password')} ref="password" type="password" placeholder="Password" />
-                <input onChange={this.onInputChange.bind(this, 'passwordValid')} ref="passwordValid" type="password" placeholder="Password again" />
-                <input onChange={this.onInputChange.bind(this, 'email')} ref="email" type="email" placeholder="Email"/>
+            <form onSubmit={this.submit} className="Register">
+                <Input onChange={this.onInputChange} type="text"
+                    placeholder="Name" field={"name"}/>
+                <Input onChange={this.onInputChange} type="password"
+                    placeholder="Password" field={"password"}/>
+                <Input onChange={this.onInputChange} type="password"
+                    placeholder="Password" field={"passwordValid"}/>
+                <Input onChange={this.onInputChange} type="email"
+                    placeholder="Email" field={"email"}/>
                 <button className="button is-link">Register</button>
-                <p className="msg" ref="msg">Please fill out all fields</p>
+                <p className={`msg ${msgClass}`} ref="msg">Please fill out all fields</p>
             </form>
         )
     }

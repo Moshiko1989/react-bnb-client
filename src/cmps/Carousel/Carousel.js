@@ -37,10 +37,12 @@ export class Carousel extends Component {
     initState = (getter, word) => {
         let keyWord = this.props.keyWord[0].toUpperCase()
             + this.props.keyWord.slice(1);
+            
         let previews = null;
         let title = null;
         let length = null;
         let previewFullSize = this.state.cardSize + this.state.marginSize;
+
         if (word) {
             previews = this.props.FlatStore[getter]
                 .map(flat => {
@@ -81,9 +83,12 @@ export class Carousel extends Component {
 
     nextCard = () => {
         let previewFullSize = this.state.cardSize + this.state.marginSize;
+
         if (!this.state.stopHold || !this.state.validSize) return;
+
         const flatPrev = document.querySelector(`.${this.props.keyWord}`);
         flatPrev.style.transition = 'transform 1s';
+
         if (flatPrev.style.transform === '') {
             flatPrev.style.transform = `translateX(-${previewFullSize}px)`
             this.holdTime()
@@ -98,13 +103,18 @@ export class Carousel extends Component {
 
     prevCard = () => {
         let previewFullSize = this.state.cardSize + this.state.marginSize;
+
         if (!this.state.stopHold) return;
+
         const flatPrev = document.querySelector(`.${this.props.keyWord}`);
         flatPrev.style.transition = 'transform 1s';
         let leftInt = parseInt(flatPrev.style.transform.slice(11), 10);
+
         if (flatPrev.style.transform === 'translateX(0px)') return;
+
         leftInt += previewFullSize;
         flatPrev.style.transform = `translateX(${leftInt}px)`
+
         this.holdTime()
     }
 

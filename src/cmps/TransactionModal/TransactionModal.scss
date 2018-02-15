@@ -1,36 +1,18 @@
 @import '../../css/_vars.scss';
 
 .modal {
-
     .modal-card{
         margin: 30vh auto;
         max-width: 540px;
         .modal-card-body {
             form {
-                display: flex;
-                flex-direction: column;
                 input {
-                    padding: 1em;
-                    border: none;
-                    border-bottom: 1px solid $secondary-color;
-                    font-family: $font-family-txt;
-                    background-color: #F6F4F4;
-                    width: 50%;
                     margin: 0 auto;
                     margin-bottom: 1vh;
                 }
                 p {
                     text-align: left;    
-                    margin: 0 auto;       
-                    width: 50%;
                     padding-bottom: 3px;
-                }
-                .msg {
-                    visibility: hidden;
-                    padding: 1em 1em 0 0;
-                    opacity: 0;
-                    color: $secondary-color;
-                    transition: all .8s;        
                 }
             }
         }

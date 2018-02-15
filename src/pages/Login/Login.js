@@ -4,23 +4,20 @@ import { inject } from 'mobx-react';
 import { NavLink } from 'react-router-dom';
 // Components
 import { Input } from '../../cmps/Input/Input';
-// Styles
-import './Login.css'
 
 @inject('UserStore')
 export class Login extends Component {
     state = {
-        userCredentials: {
-
-        }
+        userCredentials: {},
+        msgClass: ''
     }
 
     handleServerResponse = () => {
         setTimeout(() => {
             if (!this.props.UserStore.currUserGetter) {
                 this.updateMsg('User or password are not valid');
+                this.setState({msgClass: 'updated'})
             } else {
-                console.log(this.props.history);
                 this.props.history.goBack();
             }
         }, 100)
@@ -28,8 +25,6 @@ export class Login extends Component {
 
     updateMsg = (msg) => {
         this.refs.msg.innerText = msg;
-        this.refs.msg.style.visibility = 'visible';
-        this.refs.msg.style.opacity = '0.5';
     }
 
     validate = () => {
@@ -38,6 +33,7 @@ export class Login extends Component {
             !this.state.userCredentials.password
         ) {
             this.updateMsg('Please fill out both name and password');
+            this.setState({msgClass: 'updated'})
             return false;
         }
         return true;
@@ -59,18 +55,23 @@ export class Login extends Component {
     }
 
     render() {
+        let msgClass = this.state.msgClass;
         return (
-            <form onSubmit={this.submit} className="login">
+            <form onSubmit={this.submit} className="Login">
+                
                 <Input onChange={this.onInputChange} type="text"
                     placeholder="Name" field={"name"}/>
-                <Input onChange={this.onInputChange} type="password" placeholder="Password" field={"password"}/>
+                
+                <Input onChange={this.onInputChange} type="password" 
+                    placeholder="Password" field={"password"}/>
 
                 <button className="button is-link">Log In</button>
 
                 <NavLink to="/signup">
                     <p className="link-register">Not registered yet?</p>
                 </NavLink>
-                <p className="msg" ref="msg">Please fill out both name and password</p>
+                
+                <p className={`msg ${msgClass}`} ref="msg">Please fill out both name and password</p>
             </form>
         )
     }

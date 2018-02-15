@@ -1,45 +1,49 @@
-
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-a {
-  text-decoration: none;
-  color: black;
-}
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.switch-header {
-
-}
-
-.outer-wrapper {
+form.Login, form.Register, form.TransactionModal {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
-}
+  flex-direction: column; }
+  form.Login .link-register, form.Login p, form.Register .link-register, form.Register p, form.TransactionModal .link-register, form.TransactionModal p {
+    margin: 0 auto;
+    width: 50%; }
+  form.Login .msg, form.Register .msg, form.TransactionModal .msg {
+    font-size: .5em;
+    height: .8em;
+    visibility: hidden;
+    padding: 1em 1em 0 0;
+    opacity: 0;
+    color: #fd5c63;
+    transition: all .8s; }
+  form.Login .updated, form.Register .updated, form.TransactionModal .updated {
+    font-size: .9em;
+    visibility: visible;
+    opacity: 0.5; }
 
+form.Login, form.Register {
+  width: 30vw;
+  height: 60vh;
+  margin: 10vh auto;
+  justify-content: center;
+  box-shadow: 0px 0px 9.5px -2px grey;
+  border: 1px solid transparent;
+  transition: all .6s; }
+  form.Login .button, form.Login .is-link, form.Register .button, form.Register .is-link {
+    margin: 2vh auto;
+    width: 50%;
+    background-color: #fd5c63; }
+  form.Login .button:hover, form.Login .is-link:hover, form.Register .button:hover, form.Register .is-link:hover {
+    background-color: red; }
+  form.Login .link-register, form.Register .link-register {
+    text-align: left;
+    color: #fd5c63;
+    padding: 1em 1em 0 0; }
+  form.Login .msg, form.Register .msg {
+    text-align: left;
+    margin: 0 auto;
+    width: 50%; }
+
+form.Login:hover, form.Register:hover {
+  box-shadow: 0;
+  border: 1px solid #fd5c63; }
+
+@media screen and (max-width: 660px) {
+  form.Login, form.Register {
+    width: 90vw; } }
