@@ -3,6 +3,7 @@
 form.Login, form.Register, form.TransactionModal {
     display: flex;
     flex-direction: column;
+    justify-content: center;    
     .link-register, p {
         margin: 0 auto;
         width: 50%;
@@ -10,9 +11,9 @@ form.Login, form.Register, form.TransactionModal {
         
     .msg {
         font-size: .5em;
+        height: .9em;
         height: .8em;
         visibility: hidden;
-        padding: 1em 1em 0 0;
         opacity: 0;
         color: $secondary-color; 
         transition: all .8s;        
@@ -27,9 +28,10 @@ form.Login, form.Register, form.TransactionModal {
 
 form.Login, form.Register {
     width: 30vw;
+    min-width: 350px;
+    min-height: 350px;
     height: 60vh;
     margin: 10vh auto;
-    justify-content: center;
     box-shadow: 0px 0px 9.5px -2px grey;
     border: 1px solid rgba(0, 0, 0, 0);
     transition: all .6s;
@@ -54,12 +56,11 @@ form.Login, form.Register {
         width: 50%;
      }
 }
+
 form.Login:hover, form.Register:hover {
     box-shadow: 0;
     border: 1px solid $secondary-color;
 }
-
-
 
 @media screen and (max-width: 660px ) {
     form.Login, form.Register {

@@ -1,11 +1,24 @@
 @import '../../css/_vars.scss';
-
+body.noScroll { /* ...or body.dialogShowing */
+    overflow: hidden;
+  }
 .modal {
     .modal-card{
-        margin: 30vh auto;
-        max-width: 540px;
+        margin: 0 auto;
+        width: 40vw;
+        min-width: 450x;
+        min-height: 400px;
+        height: 100%;
+        // max-width: 540px;
+        .modal-card-head {
+            // height: 10vh
+        }
         .modal-card-body {
+            // height: 80vh;
+            // padding: 0;
             form {
+                // height: 100%;
+                // width: 100%;
                 input {
                     margin: 0 auto;
                     margin-bottom: 1vh;
@@ -16,7 +29,8 @@
                 }
             }
         }
-        footer {
+        .modal-card-foot {
+            // height: 10vh;
             .is-success {
                 background-color: $secondary-color;
             }
@@ -30,10 +44,10 @@
     }
 }
 
-@media screen and (max-width: 540px ) {
+@media screen and (max-width: 650px ) {
     .modal {
         .modal-card {
-            max-width: 90vw;
+            width: 90vw;
         }
     }
 }

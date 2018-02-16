@@ -1,19 +1,26 @@
+body.noScroll {
+  /* ...or body.dialogShowing */
+  overflow: hidden; }
+
 .modal .modal-card {
-  margin: 30vh auto;
-  max-width: 540px; }
+  margin: 0 auto;
+  width: 40vw;
+  min-width: 450x;
+  min-height: 400px;
+  height: 100%; }
   .modal .modal-card .modal-card-body form input {
     margin: 0 auto;
     margin-bottom: 1vh; }
   .modal .modal-card .modal-card-body form p {
     text-align: left;
     padding-bottom: 3px; }
-  .modal .modal-card footer .is-success {
+  .modal .modal-card .modal-card-foot .is-success {
     background-color: #fd5c63; }
-  .modal .modal-card footer .is-success:hover {
+  .modal .modal-card .modal-card-foot .is-success:hover {
     background-color: red; }
-  .modal .modal-card footer .cancel-modal:hover {
+  .modal .modal-card .modal-card-foot .cancel-modal:hover {
     background-color: #eae7e7e0; }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 650px) {
   .modal .modal-card {
-    max-width: 90vw; } }
+    width: 90vw; } }

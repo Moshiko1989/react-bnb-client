@@ -1,12 +1,12 @@
 import axios from 'axios';
 // Services
 import StorageService from '../services/StorageService';
-const URL = 'http://localhost:4000/user';
+let URL = 'http://localhost:5000/user';
 const STORAGE_KEY = 'user';
 
-// if (process.env.NODE_ENV !== 'development'){
-//     URL = ''
-// }
+if (process.env.NODE_ENV !== 'development'){
+    URL = '/user'
+}
 
 function loadPrevUser() {
     return StorageService.load(STORAGE_KEY);

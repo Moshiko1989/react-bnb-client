@@ -1,8 +1,8 @@
 import axios from 'axios'
-const URL = 'http://localhost:4000/flats'
-// if (process.env.NODE_ENV !== 'development') {
-//     URL = ''
-// }
+let URL = 'http://localhost:5000/flats'
+if (process.env.NODE_ENV !== 'development') {
+    URL = '/flats'
+}
 
 function getFlats(query = null) {
     return axios.get(URL).then(res => res.data);

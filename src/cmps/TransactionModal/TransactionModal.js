@@ -7,10 +7,17 @@ import './TransactionModal.css'
 
 export class TransactionModal extends Component {
     state = {
+        bookingDetails: {},
+        msgClass: '',
+        msgTxt: ''
     };
 
     componentDidMount() {
         document.addEventListener('keyup', this.closeModal);
+        document.addEventListener('scroll', ev => {
+            // alert()
+            ev.preventDefault()
+        }, false);
     }
     componentWillUnmount() {
         document.removeEventListener('keyup', this.closeModal);
@@ -23,53 +30,65 @@ export class TransactionModal extends Component {
     }
 
     onInputChange = (field, ev) => {
+        let fieldValue = null;
+
         if (field === 'bookStart' || field === 'bookEnd') {
             let arr = ev.target.value.split('-');
-            let date = {
+            fieldValue = {
                 year: arr[0],
                 month: arr[1],
                 day: arr[2],
             }
-            this.setState({
-                [field]: date
-            });
         } else if (field === 'guestCount') {
-            let guestCount = ev.target.value;
-            this.setState({
-                [field]: guestCount
-            });
+            fieldValue = ev.target.value;
         }
-    }
-
-    updateMsg = (msg) => {
-        this.refs.msg.innerText = msg;
-        this.refs.msg.style.visibility = 'visible';
-        this.refs.msg.style.opacity = '0.5';
+        const bookingDetails = {
+            ...this.state.bookingDetails,
+            [field]: fieldValue
+        }
+        this.setState({ bookingDetails })
     }
 
     validate = () => {
-        if (!this.state.bookStart || !this.state.bookEnd || !this.state.guestCount) {
-            this.updateMsg('Please fill all fields');
+        let bookingDetails = this.state.bookingDetails;
+
+        if (!bookingDetails.bookStart || !bookingDetails.bookEnd || !bookingDetails.guestCount) {
+            this.setState({
+                msgClass: 'updated',
+                msgTxt: 'Please fill all fields'
+            })
             return false;
         }
 
-        if (+this.state.bookStart.year > +this.state.bookEnd.year) {
-            this.updateMsg('Year is  not valid');
+        if (+bookingDetails.bookStart.year > +bookingDetails.bookEnd.year) {
+            this.setState({
+                msgClass: 'updated',
+                msgTxt: 'Year is  not valid'
+            })
             return false;
         }
 
-        if (+this.state.bookStart.month > +this.state.bookEnd.month) {
-            this.updateMsg('Month is  not valid');
+        if (+bookingDetails.bookStart.month > +bookingDetails.bookEnd.month) {
+            this.setState({
+                msgClass: 'updated',
+                msgTxt: 'Month is  not valid'
+            })
             return false;
         }
 
-        if (+this.state.bookStart.day > +this.state.bookEnd.day) {
-            this.updateMsg('Day is  not valid');
+        if (+bookingDetails.bookStart.day > +bookingDetails.bookEnd.day) {
+            this.setState({
+                msgClass: 'updated',
+                msgTxt: 'Day is  not valid'
+            })
             return false;
         }
 
-        if (+this.state.guestCount <= 0) {
-            this.updateMsg('Guest count is not valid');
+        if (+bookingDetails.guestCount <= 0) {
+            this.setState({
+                msgClass: 'updated',
+                msgTxt: 'Guest count is not valid'
+            })
             return false;
         }
         return true;
@@ -78,11 +97,13 @@ export class TransactionModal extends Component {
     submitForm = (ev) => {
         if (!this.validate()) return;
 
-        this.props.onSubmit(this.state);
+        this.props.onSubmit(this.state.bookingDetails);
         this.closeModal(ev);
     }
 
     render() {
+        let msgClass = this.state.msgClass;
+        let msgTxt = this.state.msgTxt
         return (
             <div>
                 <div className="modal">
@@ -104,7 +125,7 @@ export class TransactionModal extends Component {
                                 <p>How many will you be?</p>
                                 <Input onChange={this.onInputChange} type="number" field={"guestCount"} />
 
-                                <p className="msg" ref="msg">MSG</p>
+                                <p className={`msg ${msgClass}`} ref="msg">{msgTxt}</p>
                             </form>
                         </section>
                         <footer className="modal-card-foot">
