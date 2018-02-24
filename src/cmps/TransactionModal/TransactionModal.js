@@ -14,12 +14,11 @@ export class TransactionModal extends Component {
 
     componentDidMount() {
         document.addEventListener('keyup', this.closeModal);
-        document.addEventListener('scroll', ev => {
-            ev.preventDefault()
-        }, false);
+        this.props.toggleScroll()
     }
     componentWillUnmount() {
         document.removeEventListener('keyup', this.closeModal);
+        this.props.toggleScroll()        
     }
     closeModal = (ev) => {
         if (!ev.keyCode || ev.keyCode === 27) {

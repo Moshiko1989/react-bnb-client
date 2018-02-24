@@ -17,29 +17,41 @@ import { Footer } from './cmps/Footer/Footer';
 
 @inject('FlatStore', 'UserStore')
 class App extends Component {
-  componentDidMount() {
-    this.props.FlatStore.loadFlats()
+  state = {
+    scroll: ''
   }
+  componentDidMount() {
+    this.props.FlatStore.loadFlats();
+  }
+
+  toggleScroll = () => {
+    if (!this.state.scroll) {
+      this.setState({scroll: 'no-scroll'})
+    } else {
+      this.setState({scroll: ''})
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <Router>
-          <div className="outer-wrapper">
-            <div className="switch-header">
-              <Header props={this.props} />
-                <Switch className="switch">
-                  <Route exact path="/flat/:id" render={props => <FlatPage {...props} />}></Route>
-                  <Route path="/signup" component={Register} />
-                  <Route path="/login" component={Login} />
-                  <Route path="/profile" component={ProfilePage} />
-                  <Route exact path="/" render={props => <HomePage {...props} />}></Route>
-                </Switch>
+        <div className={`App ${this.state.scroll}`} ref="App">
+          <Router>
+            <div className="outer-wrapper">
+              <div className="switch-header">
+                <Header props={this.props} />
+                  <Switch className="switch">
+                    <Route exact path="/flat/:id" render={props => <FlatPage {...props} toggleScroll={this.toggleScroll}/>}></Route>
+                    <Route path="/signup" component={Register} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/profile" component={ProfilePage} />
+                    <Route exact path="/" render={props => <HomePage {...props} />}></Route>
+                  </Switch>
+              </div>
+              <Footer/>
             </div>
-            <Footer/>
-          </div>
-        </Router>
-      </div >
-    );
+          </Router>
+        </div >
+        )
   }
 }
 

@@ -1,4 +1,8 @@
 @import './css/_vars.scss';
+.no-scroll {
+    overflow: hidden;
+}
+
 .outer-wrapper {
     height: 100vh;
     display: flex;

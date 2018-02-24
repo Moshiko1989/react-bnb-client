@@ -1,7 +1,5 @@
 @import '../../css/_vars.scss';
-body.noScroll { /* ...or body.dialogShowing */
-    overflow: hidden;
-  }
+
 .modal {
     .modal-card{
         margin: 0 auto;

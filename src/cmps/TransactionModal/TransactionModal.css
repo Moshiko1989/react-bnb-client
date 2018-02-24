@@ -1,7 +1,3 @@
-body.noScroll {
-  /* ...or body.dialogShowing */
-  overflow: hidden; }
-
 .modal .modal-card {
   margin: 0 auto;
   width: 40vw;
