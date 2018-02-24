@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import logo from '../../logo.png';
+
 // Styles
 import './Header.css';
 
 @inject('UserStore')
 @observer
-
 export class Header extends Component {
 
     clearUser = () => {
@@ -23,7 +23,7 @@ export class Header extends Component {
                     <div className="logo">
                         <img src={logo} alt="logo" />
                     </div>
-                    <h2><pre>React-bnb</pre></h2>
+                    <pre>React-bnb</pre>
                 </NavLink>
                 <h2 className="welcome"> Welcome {currUser ? currUser.name : ' Guest'}</h2>
                 <nav>

@@ -30,15 +30,16 @@ body.noScroll { /* ...or body.dialogShowing */
             }
         }
         .modal-card-foot {
-            // height: 10vh;
             .is-success {
                 background-color: $secondary-color;
+                &:hover {
+                    background-color: red;
+                }
             }
-            .is-success:hover {
-                background-color: red;
-            }
-            .cancel-modal:hover {
-                background-color: #eae7e7e0;
+            .cancel-modal {
+                &:hover {
+                    background-color: #eae7e7e0;
+                }
             }
         }
     }

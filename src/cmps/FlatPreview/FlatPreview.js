@@ -13,12 +13,10 @@ export class FlatPreview extends Component {
     toggleLike = () => {
 
         if (!this.props.UserStore.currUserGetter) {
-            // this.props.history.push('/login');
+            this.props.history.push('/login');
             return;
         }
-
         let userId = this.props.UserStore.currUserGetter._id;
-        // console.log(this.props.flat._id);
         this.props.UserStore.toggleLike(this.props.flat._id);
         this.props.FlatStore.toggleLike(userId, this.props.flat);
     }

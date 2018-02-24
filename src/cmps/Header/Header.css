@@ -7,20 +7,23 @@
   .header pre {
     background: none;
     padding: 0; }
-  .header pre:hover {
-    color: #fd5c63; }
+    .header pre:hover {
+      color: #fd5c63; }
   .header .logo-container {
     display: flex;
     align-self: center; }
     .header .logo-container pre {
-      color: #fd5c63; }
+      color: #fd5c63;
+      align-self: center; }
     .header .logo-container .logo {
       width: 60px;
       padding: 1vh 1vw; }
       .header .logo-container .logo img {
         width: 100%; }
   .header h2 {
-    align-self: center; }
+    align-self: center;
+    font-size: 1.5em;
+    font-family: Monospace; }
   .header nav {
     align-self: center; }
     .header nav ul {

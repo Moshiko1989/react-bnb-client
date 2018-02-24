@@ -10,6 +10,10 @@
         cursor: pointer;
         font-size: 1.2em;
         transition: all 200ms;
+        &:hover {
+            font-size: 1.5em;
+            right: 12%;
+        }
         .fa {
             position: absolute;
             left: 5%;
@@ -21,6 +25,9 @@
     }
     a {
         color: $secondary-color;
+        &:hover {
+            color: black;
+        }
     }
     .img-container {
         img {
@@ -43,13 +50,6 @@
             white-space: nowrap;
         }
     }
-    a:hover {
-        color: black;
-    }
-    .heart:hover {
-        font-size: 1.5em;
-        right: 12%;
-    }
 }
 .flat-preview:hover {
     opacity: .7;
@@ -57,9 +57,7 @@
 
 @media screen and (max-width: 709px ) {
     .flat-preview {
-        margin: 20px 0;
-        // width: 80vw;
-        
+        margin: 20px 0;        
     }
 }
 

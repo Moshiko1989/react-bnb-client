@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react'
 import './ProfilePage.css';
 // Components
 import { Carousel } from '../../cmps/Carousel/Carousel';
+import { Loader } from '../../cmps/Loader/Loader';
 
 @inject('FlatStore', 'UserStore')
 @observer
@@ -26,15 +27,15 @@ export class ProfilePage extends Component {
             !this.props.FlatStore.userLikedFlatsGetter ||
             !this.props.FlatStore.bookedByUserGetter
         ) {
-            return <div>not ready</div>
+            return <Loader/>
         }
         return (
             <main className="main-home">
                     <div>
-                        <Carousel  keyWord={'likedByUser'} />
+                        <Carousel history={this.props.history} keyWord={'likedByUser'} />
                     </div>
                     <div>
-                        <Carousel  keyWord={'bookedByUser'}/>
+                        <Carousel history={this.props.history} keyWord={'bookedByUser'}/>
                     </div>
             </main>
         )

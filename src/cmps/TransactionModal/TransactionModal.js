@@ -15,7 +15,6 @@ export class TransactionModal extends Component {
     componentDidMount() {
         document.addEventListener('keyup', this.closeModal);
         document.addEventListener('scroll', ev => {
-            // alert()
             ev.preventDefault()
         }, false);
     }

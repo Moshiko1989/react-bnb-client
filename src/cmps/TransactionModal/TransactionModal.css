@@ -16,8 +16,8 @@ body.noScroll {
     padding-bottom: 3px; }
   .modal .modal-card .modal-card-foot .is-success {
     background-color: #fd5c63; }
-  .modal .modal-card .modal-card-foot .is-success:hover {
-    background-color: red; }
+    .modal .modal-card .modal-card-foot .is-success:hover {
+      background-color: red; }
   .modal .modal-card .modal-card-foot .cancel-modal:hover {
     background-color: #eae7e7e0; }
 

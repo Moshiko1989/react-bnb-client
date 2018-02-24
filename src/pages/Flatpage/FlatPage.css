@@ -6,26 +6,24 @@
   text-align: center;
   margin: 0 auto; }
   .flat-info .img-container {
-    width: 100%;
-    margin-top: 4vh;
-    position: relative; }
-    .flat-info .img-container .flat-img {
-      width: 100%; }
+    position: relative;
+    width: 75%;
+    margin: 4vh auto 0; }
     .flat-info .img-container .heart {
       position: absolute;
       top: 5%;
       right: 5%;
       font-size: 2.5em;
       cursor: pointer; }
+      .flat-info .img-container .heart:hover {
+        font-size: 3em;
+        right: 7%;
+        top: 6%;
+        transition: all 200ms; }
       .flat-info .img-container .heart .fa-heart {
         color: #fd5c63; }
       .flat-info .img-container .heart .fa-heart-o {
         color: white; }
-    .flat-info .img-container .heart:hover {
-      font-size: 3em;
-      right: 7%;
-      top: 6%;
-      transition: all 200ms; }
     .flat-info .img-container .fa-plus {
       color: white;
       font-size: 4em;
@@ -72,11 +70,12 @@
 
 @media screen and (max-width: 540px) {
   .flat-info {
-    font-size: .77em; }
+    font-size: .77em;
+    width: 90vw; }
     .flat-info .img-container .heart {
       font-size: 2em; }
-    .flat-info .img-container .heart:hover {
-      font-size: 2.4em; }
+      .flat-info .img-container .heart:hover {
+        font-size: 2.4em; }
     .flat-info .img-container .fa-plus::before {
       font-size: .7em; }
     .flat-info .flat-desc-p {

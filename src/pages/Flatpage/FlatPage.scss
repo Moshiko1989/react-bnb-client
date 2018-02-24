@@ -8,18 +8,21 @@
     text-align: center;
     margin: 0 auto;
     .img-container {
-        width: 100%;
-        margin-top: 4vh;
         position: relative;
-        .flat-img {
-            width: 100%;
-        }
+        width: 75%;
+        margin: 4vh auto 0; 
         .heart {
             position: absolute;
             top: 5%;
             right: 5%;
             font-size: 2.5em; 
             cursor: pointer;
+            &:hover {
+                font-size: 3em; 
+                right: 7%;
+                top: 6%;
+                transition: all 200ms; 
+            }
             
             .fa-heart {
                 color: $secondary-color;
@@ -30,12 +33,7 @@
             }
         
         }
-        .heart:hover {
-            font-size: 3em; 
-            right: 7%;
-            top: 6%;
-            transition: all 200ms; 
-        }
+
         .fa-plus {
             color: white;
             font-size: 4em;
@@ -100,13 +98,13 @@
 @media screen and (max-width: 540px ) {
     .flat-info {
         font-size: .77em;
+        width: 90vw;
         .img-container {
             .heart {
-                font-size: 2em;         
-            }
-            .heart:hover {
-                font-size: 2.4em;
-                // top: 0%;
+                font-size: 2em; 
+                &:hover {
+                    font-size: 2.4em;
+                }        
             }
             .fa-plus::before {
                 font-size: .7em;

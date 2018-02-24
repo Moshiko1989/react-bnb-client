@@ -5,18 +5,14 @@
     justify-content: space-between;
     width: 95vw;
     margin: 0 auto;
-    // border-bottom: 1px solid $secondary-color;
-    // box-shadow: 0 0px 5px 0 rgba(0,0,0,.1);
     box-shadow: 0 3px 2px -2px $secondary-color;
 
     pre {
         background: none;
         padding: 0;
-    }
-    pre:hover {
-        
-            color: $secondary-color;
-        
+        &:hover {
+            color: $secondary-color; 
+        }
     }
     .logo-container {
         display: flex;
@@ -24,6 +20,7 @@
 
         pre {
             color: $secondary-color;
+            align-self: center;
         }
         
         .logo {
@@ -35,14 +32,13 @@
             }
         }
     }
-
     h2 {
         align-self: center;
+        font-size: 1.5em;
+        font-family: Monospace
     }
-
     nav {
         align-self: center;
-
         ul {
             display: flex;
             justify-content: space-between;

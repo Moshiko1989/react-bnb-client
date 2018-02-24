@@ -15,7 +15,6 @@ import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 import { Header } from './cmps/Header/Header';
 import { Footer } from './cmps/Footer/Footer';
 
-
 @inject('FlatStore', 'UserStore')
 class App extends Component {
   componentDidMount() {
@@ -29,11 +28,11 @@ class App extends Component {
             <div className="switch-header">
               <Header props={this.props} />
                 <Switch className="switch">
-                  <Route exact path="/flat/:id" render={(props) => <FlatPage {...props} />}></Route>
+                  <Route exact path="/flat/:id" render={props => <FlatPage {...props} />}></Route>
                   <Route path="/signup" component={Register} />
                   <Route path="/login" component={Login} />
                   <Route path="/profile" component={ProfilePage} />
-                  <Route exact path="/" render={(props) => <HomePage {...props} />}></Route>
+                  <Route exact path="/" render={props => <HomePage {...props} />}></Route>
                 </Switch>
             </div>
             <Footer/>

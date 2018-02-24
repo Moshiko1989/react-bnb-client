@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react';
 import './HomePage.css';
 // Components
 import { Carousel } from '../../cmps/Carousel/Carousel';
+import { Loader } from '../../cmps/Loader/Loader';
 
 @inject('FlatStore')
 @observer
@@ -17,17 +18,17 @@ export class HomePage extends Component {
     }
 
     render() {
-        if (!this.props.FlatStore.flatsGetter) return <div>not ready</div>
+        if (!this.props.FlatStore.flatsGetter) return <Loader/>
         return (
             <main className="main-home" >
                     <div className="home-li">
-                        <Carousel  keyWord={'taiwan'}/>
+                        <Carousel history={this.props.history} keyWord={'taiwan'}/>
                     </div >
                     <div className="home-li">
-                        <Carousel  keyWord={'cuba'}/>
+                        <Carousel history={this.props.history} keyWord={'cuba'}/>
                     </div>
                     <div className="home-li">
-                        <Carousel  keyWord={'poland'}/>
+                        <Carousel history={this.props.history} keyWord={'poland'}/>
                     </div>
             </main>
         )

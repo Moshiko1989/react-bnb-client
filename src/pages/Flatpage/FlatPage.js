@@ -97,8 +97,6 @@ export class FlatPage extends Component {
                         <li><i className="fa fa-coffee" aria-hidden="true"></i><span> Breakfast</span></li>
                     </ul>
 
-
-
                     <ul className="detail-list">
                         <li><i className="fa fa-paw" aria-hidden="true"></i><span> Pets allowed</span></li>
                         <li><i className="fa fa-cutlery" aria-hidden="true"></i><span> Kitchen</span></li>
@@ -115,7 +113,6 @@ export class FlatPage extends Component {
                         <li>Per night: <span> {flat.prices.perNight}$</span></li>
                         <li>Extra people: <span> {flat.prices.extraPeople}$</span></li>
                     </ul>
-
 
                     <ul className="detail-list">
                         <li>Weekly discount: <span> {flat.prices.weeklyDiscount}%</span></li>
