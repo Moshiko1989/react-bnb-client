@@ -1,13 +1,13 @@
-.loader {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #fd5c63;
+.my-loader {
+  border: 1vw solid #DDDDDD;
+  border-top: 1vw solid #988F80;
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  height: 10vw;
+  width: 10vw;
   animation: spin 2s linear infinite;
   position: fixed;
-  top: calc(50vh - 60px);
-  left: calc(50vw - 60px); }
+  top: calc(50vh - 5vw);
+  left: calc(50vw - 5vw); }
 
 @keyframes spin {
   0% {

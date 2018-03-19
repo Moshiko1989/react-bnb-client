@@ -1,0 +1,31 @@
+@import '../../_vars.scss';
+
+.App { 
+    .modal-component {
+        .modal-card {
+            transform: translateY(20vh);
+            .modal-card-head, .modal-card-foot {
+                background-color: $bg-color;
+            }
+            .modal-card-body {
+                flex-grow: 0;
+                background-color: $light-color;
+            }
+            .modal-card-foot {
+                .is-success {
+                    background-color: $color;
+                    &:hover {
+                        background-color: $light-color;
+                        color: $color;
+                    }
+                }
+                .cancel {
+                    background-color:  $light-color;
+                    &:hover {
+                        background: $alt-color;
+                    }
+                }
+            }
+        }
+    }
+}

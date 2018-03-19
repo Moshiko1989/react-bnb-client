@@ -1,0 +1,16 @@
+.App .modal-component .modal-card {
+  transform: translateY(20vh); }
+  .App .modal-component .modal-card .modal-card-head, .App .modal-component .modal-card .modal-card-foot {
+    background-color: #988F80; }
+  .App .modal-component .modal-card .modal-card-body {
+    flex-grow: 0;
+    background-color: #DDDDDD; }
+  .App .modal-component .modal-card .modal-card-foot .is-success {
+    background-color: #250848; }
+    .App .modal-component .modal-card .modal-card-foot .is-success:hover {
+      background-color: #DDDDDD;
+      color: #250848; }
+  .App .modal-component .modal-card .modal-card-foot .cancel {
+    background-color: #DDDDDD; }
+    .App .modal-component .modal-card .modal-card-foot .cancel:hover {
+      background: #E2DFB4; }

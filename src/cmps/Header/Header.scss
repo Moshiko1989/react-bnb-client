@@ -1,61 +1,75 @@
- @import '../../css/_vars.scss';
+@import '../../_vars.scss';
 
-.header {
+.Header {
+    padding: 0 2%;
+    background-image: url('../../assets/library.png');
+    background-position: center center;
+    background-size: cover;
     display: flex;
-    justify-content: space-between;
-    width: 95vw;
-    margin: 0 auto;
-    box-shadow: 0 3px 2px -2px $secondary-color;
-
-    pre {
-        background: none;
-        padding: 0;
-        &:hover {
-            color: $secondary-color; 
+    flex-direction: column;
+    .my-logo {
+        margin: 0 auto;
+        width: 20%;
+        max-width: 100px;
+        img {
+            width: 100%;
         }
     }
-    .logo-container {
+    .my-search {
+        margin: 0 auto;
+        width: 50vw;
         display: flex;
-        align-self: center;
-
-        pre {
-            color: $secondary-color;
-            align-self: center;
-        }
-        
-        .logo {
-            width: 60px;
-            padding: 1vh 1vw;
-
-            img {
-                width: 100%
-            }
-        }
-    }
-    h2 {
-        align-self: center;
-        font-size: 1.5em;
-        font-family: Monospace
-    }
-    nav {
-        align-self: center;
-        ul {
+        flex-direction: column;
+        justify-content: flex-end;
+        form {
+            width: 100%;
             display: flex;
-            justify-content: space-between;
+            border: none; 
+            border-bottom: 4px solid $light-color;
+            .search-bar {
+                background-color: transparent;
+                color: $light-color;
+                width: 100%;
+                // border: 2px solid $light-color;
+                border: none;
+                border-right: none;
+                outline: none;
+                padding: 6px;
+                font-size: 1.5em;
+                &::placeholder {
+                    color: $light-color;
+                    opacity: .8;
+                }
+            }
+            i {
+                padding: 6px;                
+                font-size: 1.5em;
+                color: $light-color;    
+                // border: 2px solid $light-color;
+                border-left: none; 
+            }
         }
-        pre {
-            font-family: $font-family-txt;
-            margin: 1vw;
+    }
+}
+
+@media screen and (max-width: 660px ) {
+    .Header {
+        padding: 0;
+        height: 10vh;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0;
+        .my-logo {
+            display: none;
+        }
+        .my-search {
+            width: 100%;
+            margin: 0 auto;
+            form {
+                width: 100%;
+                margin: 0;          
+            }
         }
     }
 
 }
-@media screen and (max-width: 540px ) {
-        .header {
-            .welcome {
-                display: none;
-            }
-        }
-
-}
-

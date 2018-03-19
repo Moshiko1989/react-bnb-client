@@ -1,16 +1,16 @@
-@import '../../css/_vars.scss';
+@import '../../_vars.scss';
 
-.loader {
-    border: 16px solid #f3f3f3; 
-    border-top: 16px solid $secondary-color;
+.my-loader {
+    border: $loader-size * .1 solid $light-color; 
+    border-top: $loader-size * .1 solid $bg-color;
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    height: $loader-size;
+    width: $loader-size;
     animation: spin 2s linear infinite;
     position: fixed;
-    top: calc(50vh - 60px);
-    left: calc(50vw - 60px);
-
+    top: $loader-top;
+    left: $loader-left;
+ 
 }
 
 @keyframes spin {

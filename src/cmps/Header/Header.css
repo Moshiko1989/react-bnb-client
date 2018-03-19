@@ -1,38 +1,57 @@
-.header {
+.Header {
+  padding: 0 2%;
+  background-image: url("../../assets/library.png");
+  background-position: center center;
+  background-size: cover;
   display: flex;
-  justify-content: space-between;
-  width: 95vw;
-  margin: 0 auto;
-  box-shadow: 0 3px 2px -2px #fd5c63; }
-  .header pre {
-    background: none;
-    padding: 0; }
-    .header pre:hover {
-      color: #fd5c63; }
-  .header .logo-container {
+  flex-direction: column; }
+  .Header .my-logo {
+    margin: 0 auto;
+    width: 20%;
+    max-width: 100px; }
+    .Header .my-logo img {
+      width: 100%; }
+  .Header .my-search {
+    margin: 0 auto;
+    width: 50vw;
     display: flex;
-    align-self: center; }
-    .header .logo-container pre {
-      color: #fd5c63;
-      align-self: center; }
-    .header .logo-container .logo {
-      width: 60px;
-      padding: 1vh 1vw; }
-      .header .logo-container .logo img {
-        width: 100%; }
-  .header h2 {
-    align-self: center;
-    font-size: 1.5em;
-    font-family: Monospace; }
-  .header nav {
-    align-self: center; }
-    .header nav ul {
+    flex-direction: column;
+    justify-content: flex-end; }
+    .Header .my-search form {
+      width: 100%;
       display: flex;
-      justify-content: space-between; }
-    .header nav pre {
-      font-family: Helvetica, sans-serif;
-      margin: 1vw; }
+      border: none;
+      border-bottom: 4px solid #DDDDDD; }
+      .Header .my-search form .search-bar {
+        background-color: transparent;
+        color: #DDDDDD;
+        width: 100%;
+        border: none;
+        border-right: none;
+        outline: none;
+        padding: 6px;
+        font-size: 1.5em; }
+        .Header .my-search form .search-bar::placeholder {
+          color: #DDDDDD;
+          opacity: .8; }
+      .Header .my-search form i {
+        padding: 6px;
+        font-size: 1.5em;
+        color: #DDDDDD;
+        border-left: none; }
 
-@media screen and (max-width: 540px) {
-  .header .welcome {
-    display: none; } }
+@media screen and (max-width: 660px) {
+  .Header {
+    padding: 0;
+    height: 10vh;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0; }
+    .Header .my-logo {
+      display: none; }
+    .Header .my-search {
+      width: 100%;
+      margin: 0 auto; }
+      .Header .my-search form {
+        width: 100%;
+        margin: 0; } }
