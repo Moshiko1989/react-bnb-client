@@ -157,6 +157,7 @@ export class Carousel extends Component {
   setTouchStartingPoint = ev => {
     this.setState({ touch: ev.touches[0].clientX });
   };
+  
   dragCards = ev => {
     if (ev.changedTouches[0].clientX < this.state.touch) {
       this.nextCard();
@@ -169,6 +170,10 @@ export class Carousel extends Component {
       this.setState({ stopHold: true });
     }, 300);
   };
+
+  componentWillUnmount () {
+    // console.log('crsl umnted')
+  }
 
   render() {
     if (!this.props.FlatStore.flatsGetter) return <div />;

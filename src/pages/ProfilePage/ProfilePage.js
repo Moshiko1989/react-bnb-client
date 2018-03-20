@@ -14,12 +14,12 @@ export class ProfilePage extends Component {
 
     componentDidMount() {
         let user = this.props.UserStore.currUserGetter;
-        let flatsIds = user.likedFlatsIds;
-        let bookings = user.bookings.map(bookedFlat => {
+        let likedFlatsIds = user.likedFlatsIds;
+        let bookingFlatsIds = user.bookings.map(bookedFlat => {
             return bookedFlat.flatId;
         });
-        this.props.FlatStore.loadLikedFlats(flatsIds);
-        this.props.FlatStore.loadBookedFlats(bookings);
+        this.props.FlatStore.loadLikedFlats(likedFlatsIds);
+        this.props.FlatStore.loadBookedFlats(bookingFlatsIds);
     }
 
     render() {
