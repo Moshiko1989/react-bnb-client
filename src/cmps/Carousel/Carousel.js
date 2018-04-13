@@ -11,6 +11,7 @@ import { NoFlats } from "../NoFlats/NoFlats";
 @observer
 export class Carousel extends Component {
   state = {
+    touch: null,
     stopHold: true,
     carouselLength: null,
     validSize: true,
@@ -61,7 +62,7 @@ export class Carousel extends Component {
           2 * previewFullSize;
 
         if (length <= 3) {
-          this.setState({ validSize: false, displayRight: 'fa-hide' });
+          this.setState({ validSize: false, displayRight: "fa-hide" });
         }
       } else {
         previews = this.props.FlatStore[getter]
@@ -153,6 +154,16 @@ export class Carousel extends Component {
     this.holdTime();
   };
 
+  setTouchStartingPoint = ev => {
+    this.setState({ touch: ev.touches[0].clientX });
+  };
+  
+  dragCards = ev => {
+    if (ev.changedTouches[0].clientX < this.state.touch) {
+      this.nextCard();
+    } else this.prevCard();
+  };
+
   holdTime = () => {
     this.setState({ stopHold: false });
     setTimeout(() => {
@@ -160,12 +171,20 @@ export class Carousel extends Component {
     }, 300);
   };
 
+  componentWillUnmount () {
+    // console.log('crsl umnted')
+  }
+
   render() {
     if (!this.props.FlatStore.flatsGetter) return <div />;
     let length = this.props.FlatStore.flatsGetter.length;
     if (this.state.displayCarousel === "hide") return this.state.noFlats;
     return (
-      <div className={`carousel-component ${this.state.displayCarousel}`}>
+      <div
+        className={`carousel-component ${this.state.displayCarousel}`}
+        onTouchStart={this.setTouchStartingPoint}
+        onTouchEnd={this.dragCards}
+      >
         <div className="btns">
           <i
             onClick={this.prevCard}

@@ -65,7 +65,7 @@ export class FlatPage extends Component {
 
         return (
             <section className="flat-info" style={{overflow: 'hidden'}}>
-                {this.state.isModal ? <TransactionModal onSubmit={this.onSubmit} closeModal={this.closeModal} /> : null}
+                {this.state.isModal ? <TransactionModal onSubmit={this.onSubmit} closeModal={this.closeModal} toggleScroll={this.props.toggleScroll}/> : null}
                 <div className="img-container">
                     <img className="flat-img" src={flat.imgUrl} alt="flat" />
                     <div onClick={this.toggleLike} className="heart">
