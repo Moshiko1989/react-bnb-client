@@ -105,7 +105,7 @@ export class TransactionModal extends Component {
         let msgTxt = this.state.msgTxt
         return (
             <div>
-                <div className="modal">
+                <div className="modal n">
                     <div onClick={this.closeModal} className="modal-background"></div>
                     <div className="modal-card">
                         <header className="modal-card-head">
